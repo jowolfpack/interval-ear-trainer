@@ -1,6 +1,6 @@
 // Settings screen.
 import { h, toast, type Screen } from './dom.ts';
-import { store, initialProgress, type Settings } from '../trainer/store.ts';
+import { store, initialProgress, VOICE_PRESETS, type Settings } from '../trainer/store.ts';
 import { INTERVALS, noteNameAscii, intervalName } from '../dsp/notes.ts';
 import { ORDER } from '../trainer/progression.ts';
 
@@ -59,8 +59,16 @@ export function settingsScreen(): Screen {
       h('div', { class: 'card' },
         field('Piano: lowest start note', '', noteSelect(s.pianoLow, 36, s.pianoHigh, (v) => save({ pianoLow: v }))),
         field('Piano: highest start note', '', noteSelect(s.pianoHigh, s.pianoLow, 84, (v) => save({ pianoHigh: v }))),
-        field('Voice: lowest note you can sing', 'Both notes of a voice exercise stay inside your range', noteSelect(s.voiceLow, 36, s.voiceHigh - 5, (v) => save({ voiceLow: v }))),
-        field('Voice: highest note', '', noteSelect(s.voiceHigh, s.voiceLow + 5, 84, (v) => save({ voiceHigh: v }))),
+        field('Voice type', 'Sets a comfortable range; adjust the notes below if needed', h('select', {
+          onchange: (e: Event) => {
+            const p = VOICE_PRESETS.find((v) => v.type === (e.target as HTMLSelectElement).value);
+            if (p) save({ voiceType: p.type, voiceLow: p.low, voiceHigh: p.high });
+          },
+        },
+          ...VOICE_PRESETS.map((v) => h('option', { value: v.type, selected: s.voiceType === v.type }, `${v.label} (${noteNameAscii(v.low)}–${noteNameAscii(v.high)})`)),
+          h('option', { value: 'custom', selected: s.voiceType === 'custom' || s.voiceType === null, disabled: true }, s.voiceType === null ? 'Not chosen yet' : 'Custom'))),
+        field('Voice: lowest note', 'Both notes of a voice exercise stay inside your range', noteSelect(s.voiceLow, 36, s.voiceHigh - 12, (v) => save({ voiceLow: v, voiceType: 'custom' }))),
+        field('Voice: highest note', '', noteSelect(s.voiceHigh, s.voiceLow + 12, 84, (v) => save({ voiceHigh: v, voiceType: 'custom' }))),
         field('Voice: play an octave higher', 'E.g. if you prefer hearing the target in the piano’s middle register', check('voicePlayOctaveUp')),
       ),
       h('h2', {}, 'Sound & microphone'),

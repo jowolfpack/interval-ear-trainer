@@ -101,7 +101,14 @@ intervals are learned. Descending then starts with the same three. A setting for
 descending on earlier (uses the ascending set).
 
 **Voice exercises keep both notes inside the user's singing range**, and are played
-at the sung pitch (option: an octave higher). Default range G2–E4 (typical male voice).
+at the sung pitch (option: an octave higher).
+
+**Voice type presets, asked on first use of Voice mode** (Bass E2–C4, Baritone G2–D4,
+Tenor C3–G4, Alto F3–C5, Mezzo A3–E5, Soprano C4–G5). Replaces the single G2–E4 default,
+which felt high in practice and didn't fit women at all. The presets are deliberately
+comfortable rather than full classical ranges (~1½ octaves each), because an octave
+exercise uses both ends of whatever range is set. Exact notes stay editable; the
+range must span at least an octave.
 
 **Piano range limits the start key only** (default C3–C5); the second note may go
 outside, down to C2 / up to C7.

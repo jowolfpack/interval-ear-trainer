@@ -6,8 +6,8 @@ import { playInterval, preload, setVolume, stopAll } from '../audio/player.ts';
 import { AttemptListener } from '../trainer/listen.ts';
 import { judge, estimateTuning, type Judgement } from '../trainer/judge.ts';
 import { pickExercise, updateProgress, activeIntervals, type Exercise } from '../trainer/progression.ts';
-import { store, type Attempt } from '../trainer/store.ts';
-import { noteName, intervalName } from '../dsp/notes.ts';
+import { store, VOICE_PRESETS, type Attempt } from '../trainer/store.ts';
+import { noteName, noteNameAscii, intervalName } from '../dsp/notes.ts';
 
 type State = 'idle' | 'playing' | 'listening' | 'result';
 
@@ -56,15 +56,32 @@ export function trainerScreen(): Screen {
     return [e.start + shift, e.start + e.semis + shift];
   }
 
+  const needsVoiceType = () => store.settings.mode === 'voice' && store.settings.voiceType === null;
+
+  function voicePicker() {
+    return h('div', { class: 'voice-pick' },
+      h('div', { class: 'label' }, 'Voice mode'),
+      h('div', { class: 'sub' }, 'Which voice type fits you? Exercises stay inside its comfortable range.'),
+      h('div', { class: 'voice-grid' }, ...VOICE_PRESETS.map((v) => h('button', {
+        onclick: () => { store.saveSettings({ voiceType: v.type, voiceLow: v.low, voiceHigh: v.high }); render(); },
+      }, h('b', {}, v.label), h('span', { class: 'small muted' }, `${noteNameAscii(v.low)}–${noteNameAscii(v.high)}`)))),
+      h('p', { class: 'small muted' }, 'Not sure? Men usually Baritone, women Alto. Too high or low? Pick the next one, or set exact notes in ', h('a', { href: '#/settings' }, 'Settings'), '.'),
+    );
+  }
+
   function render() {
     renderMode();
     clear(prompt);
     const s = store.settings;
-    if (!ex) {
+    if (!ex && needsVoiceType()) {
+      prompt.append(voicePicker());
+    } else if (!ex) {
       prompt.append(
         h('div', { class: 'label' }, s.mode === 'piano' ? 'Piano mode' : 'Voice mode'),
         h('div', { class: 'big' }, 'Ready?'),
         h('div', { class: 'sub' }, 'The app plays two notes. Then you play (or sing) them back.'),
+        s.mode === 'voice' ? h('div', { class: 'sub small' }, `Your range: ${noteNameAscii(s.voiceLow)}–${noteNameAscii(s.voiceHigh)} · `,
+          h('a', { href: '#', onclick: (e: Event) => { e.preventDefault(); store.saveSettings({ voiceType: null }); render(); } }, 'change')) : '',
       );
     } else {
       const shown = s.showStartKey;
@@ -117,6 +134,7 @@ export function trainerScreen(): Screen {
     clear(buttons);
     const b = (label: string, onclick: () => void, cls = 'big') => h('button', { class: cls, onclick }, label);
     if (state === 'idle') {
+      if (!ex && needsVoiceType()) return;
       buttons.append(b(ex ? 'Play' : 'Start', () => next(!ex), 'primary big'));
     } else if (state === 'playing') {
       buttons.append(h('button', { class: 'big', disabled: true }, 'Listen…'));

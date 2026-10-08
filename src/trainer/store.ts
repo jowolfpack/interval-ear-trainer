@@ -11,6 +11,8 @@ export interface Settings {
   /** Comfortable singing range (MIDI); both notes of an exercise stay inside it. */
   voiceLow: number;
   voiceHigh: number;
+  /** Preset the voice range came from; null = not chosen yet (the trainer asks). */
+  voiceType: VoiceType | null;
   /** Play voice exercises an octave above the sung range. */
   voicePlayOctaveUp: boolean;
   showStartKey: boolean;
@@ -24,6 +26,21 @@ export interface Settings {
   /** Stop the mic while the app plays (iOS may route audio to the earpiece while recording). */
   releaseMic: boolean;
 }
+
+export type VoiceType = 'bass' | 'baritone' | 'tenor' | 'alto' | 'mezzo' | 'soprano' | 'custom';
+
+/**
+ * Comfortable (not extreme) ranges for untrained singers, MIDI. About an octave
+ * and a half each, so an octave exercise fits without reaching the edges often.
+ */
+export const VOICE_PRESETS: { type: Exclude<VoiceType, 'custom'>; label: string; low: number; high: number }[] = [
+  { type: 'bass', label: 'Bass', low: 40, high: 60 }, // E2–C4
+  { type: 'baritone', label: 'Baritone', low: 43, high: 62 }, // G2–D4
+  { type: 'tenor', label: 'Tenor', low: 48, high: 67 }, // C3–G4
+  { type: 'alto', label: 'Alto', low: 53, high: 72 }, // F3–C5
+  { type: 'mezzo', label: 'Mezzo', low: 57, high: 76 }, // A3–E5
+  { type: 'soprano', label: 'Soprano', low: 60, high: 79 }, // C4–G5
+];
 
 export interface Attempt {
   /** Unix ms. */
@@ -60,8 +77,9 @@ export const DEFAULT_SETTINGS: Settings = {
   mode: 'piano',
   pianoLow: 48, // C3
   pianoHigh: 72, // C5
-  voiceLow: 43, // G2 (a typical male range; set yours in Settings)
-  voiceHigh: 64, // E4
+  voiceLow: 43, // G2–D4 (baritone) until the user picks a voice type
+  voiceHigh: 62,
+  voiceType: null,
   voicePlayOctaveUp: false,
   showStartKey: true,
   showIntervalName: false,

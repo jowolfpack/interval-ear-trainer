@@ -71,7 +71,8 @@ export function makePianoPairs(count: number, seed0: number, sr = 48000): PianoP
     const r = rng(seed0 + i * 31);
     const start = 36 + Math.floor(r() * 49); // C2..C6
     let interval = (1 + Math.floor(r() * 12)) * (r() < 0.5 ? 1 : -1);
-    if (start + interval < 33 || start + interval > 96) interval = -interval;
+    // Same note range as the app (src/trainer/progression.ts: C2..C7).
+    if (start + interval < 36 || start + interval > 96) interval = -interval;
     const arts = ['legato', 'staccato', 'pedal'] as const;
     out.push({
       kind: 'piano', seed: seed0 + i, source: srcs[i % srcs.length], cond: CONDITIONS[Math.floor(i / srcs.length) % 3],

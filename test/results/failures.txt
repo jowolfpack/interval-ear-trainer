@@ -1,0 +1,173 @@
+piano-single iowa pp phone G#5 detune=-19: heard [79.85@0.32, 60.87@0.46, 79.89@0.54]
+piano-start-only det=49 start=41 heard=41.56,37.64
+piano-pair sr=48000 salamander phone pedal E3-7 det=39 ioi=0.63 g2=0.69 lvl=-28dB seed=1033: heard [52.38@0.39(energy), 45.42@1.12(pitch)] truth onsets 0.40,1.03
+piano-pair sr=48000 salamander noisy staccato G5+5 det=20 ioi=0.44 g2=0.58 lvl=-17dB seed=1035: heard [79.26@0.41(energy)] truth onsets 0.40,0.84
+piano-pair sr=48000 salamander noisy pedal G3+12 det=-45 ioi=0.87 g2=1.16 lvl=-4dB seed=1047: heard [54.55@0.41(energy)] truth onsets 0.40,1.27
+piano-pair sr=48000 salamander phone legato A2-3 det=-30 ioi=0.38 g2=0.64 lvl=-24dB seed=1051: heard [44.72@0.39(energy), 41.71@0.96(pitch)] truth onsets 0.40,0.78
+piano-pair sr=48000 iowa noisy pedal D2+7 det=32 ioi=0.71 g2=0.52 lvl=-22dB seed=1058: heard [38.45@0.41(energy)] truth onsets 0.40,1.11
+piano-pair sr=48000 iowa noisy pedal B3+3 det=-20 ioi=1.05 g2=0.66 lvl=-2dB seed=1106: heard [58.90@0.41(energy), 49.90@1.46(energy)] truth onsets 0.40,1.45
+piano-pair sr=48000 salamander noisy pedal G2+10 det=-47 ioi=0.46 g2=0.66 lvl=-11dB seed=1149: heard [42.53@0.41(energy), 52.54@1.15(flux)] truth onsets 0.40,0.86
+piano-pair sr=48000 iowa noisy pedal A#5+11 det=17 ioi=0.97 g2=1.34 lvl=-28dB seed=1160: heard [82.26@0.41(energy), 81.27@1.37(energy)] truth onsets 0.40,1.37
+piano-pair sr=48000 salamander noisy pedal C#5-5 det=-22 ioi=0.74 g2=0.85 lvl=-25dB seed=1185: heard [72.83@0.41(energy)] truth onsets 0.40,1.14
+piano-pair sr=48000 iowa noisy legato G4+3 det=-1 ioi=0.84 g2=0.62 lvl=-2dB seed=1208: heard [67.06@0.42(energy)] truth onsets 0.40,1.24
+piano-pair sr=48000 salamander noisy legato E3+7 det=48 ioi=0.64 g2=0.51 lvl=-17dB seed=1221: heard [52.48@0.41(energy)] truth onsets 0.40,1.04
+piano-pair sr=48000 iowa noisy staccato C#5-2 det=12 ioi=1.10 g2=1.02 lvl=-26dB seed=1238: heard [71.14@1.50(energy)] truth onsets 0.40,1.50
+piano-pair sr=48000 iowa noisy pedal E3-11 det=-44 ioi=0.42 g2=0.68 lvl=-17dB seed=1268: heard [51.64@0.41(energy), 40.61@0.92(pitch)] truth onsets 0.40,0.82
+piano-pair sr=48000 salamander phone pedal C#4+3 det=4 ioi=0.41 g2=0.65 lvl=-17dB seed=1309: heard [61.06@0.39(energy), 45.12@0.83(pitch), 64.10@0.96(pitch)] truth onsets 0.40,0.81
+piano-pair sr=48000 salamander noisy pedal D#3-2 det=26 ioi=1.05 g2=1.26 lvl=-5dB seed=1371: heard [51.29@0.42(energy), 39.26@0.96(voiced)] truth onsets 0.40,1.45
+piano-pair sr=48000 salamander noisy legato C6-3 det=21 ioi=0.53 g2=0.66 lvl=-22dB seed=1401: heard [84.35@0.57(voiced), 81.28@0.94(energy)] truth onsets 0.40,0.93
+piano-pair sr=48000 salamander noisy pedal F3+1 det=8 ioi=0.93 g2=0.60 lvl=-18dB seed=1455: heard [53.06@0.41(energy)] truth onsets 0.40,1.33
+piano-pair sr=48000 iowa noisy pedal G2-6 det=40 ioi=0.75 g2=0.69 lvl=-27dB seed=1460: heard [43.49@0.41(energy)] truth onsets 0.40,1.15
+piano-pair sr=48000 salamander noisy legato G#3+2 det=5 ioi=0.92 g2=0.51 lvl=-9dB seed=1485: heard [56.11@0.41(energy)] truth onsets 0.40,1.32
+piano-pair sr=48000 salamander noisy staccato E4-2 det=-41 ioi=1.19 g2=1.15 lvl=-0dB seed=1557: heard [63.66@0.55(voiced), 61.66@1.60(energy)] truth onsets 0.40,1.59
+piano-pair sr=48000 salamander noisy legato G#2+3 det=40 ioi=0.39 g2=0.87 lvl=-14dB seed=1569: heard [44.42@0.42(energy), 47.36@1.03(pitch)] truth onsets 0.40,0.79
+piano-pair sr=48000 salamander clean legato D#3+12 det=-36 ioi=0.41 g2=0.60 lvl=-27dB seed=1571: heard [50.65@0.39(energy)] truth onsets 0.40,0.81
+piano-pair sr=48000 iowa noisy pedal C4-9 det=23 ioi=0.63 g2=0.50 lvl=-22dB seed=1580: heard [60.29@0.41(energy)] truth onsets 0.40,1.03
+piano-pair sr=48000 salamander phone pedal G4-5 det=-26 ioi=0.35 g2=0.52 lvl=-18dB seed=1591: heard [42.76@0.39(energy)] truth onsets 0.40,0.75
+piano-pair sr=48000 salamander noisy legato C#3-10 det=35 ioi=0.70 g2=0.57 lvl=-15dB seed=1635: heard [49.34@0.41(energy)] truth onsets 0.40,1.10
+piano-pair sr=48000 iowa phone legato G#5+2 det=6 ioi=0.68 g2=0.51 lvl=-26dB seed=1644: heard [80.14@0.39(energy), 70.16@1.08(flux)] truth onsets 0.40,1.08
+piano-pair sr=48000 salamander phone staccato A5+1 det=-12 ioi=1.13 g2=0.73 lvl=-2dB seed=1747: heard [80.95@0.39(energy), 69.96@1.53(flux)] truth onsets 0.40,1.53
+piano-pair sr=48000 salamander phone pedal F3+1 det=-21 ioi=0.55 g2=0.55 lvl=-15dB seed=1765: heard [52.81@0.39(energy), 41.81@0.95(flux)] truth onsets 0.40,0.95
+piano-pair sr=48000 iowa phone pedal C3+1 det=-30 ioi=0.35 g2=0.74 lvl=-17dB seed=1782: heard [47.76@0.39(energy), 48.80@1.30(flux)] truth onsets 0.40,0.75
+piano-pair sr=48000 iowa noisy pedal A#4+10 det=-26 ioi=0.98 g2=0.96 lvl=-22dB seed=1796: heard [69.86@0.41(energy)] truth onsets 0.40,1.38
+piano-pair sr=48000 iowa noisy legato F5-4 det=43 ioi=0.95 g2=1.03 lvl=-10dB seed=1832: heard [77.43@0.41(energy), 73.46@1.44(flux)] truth onsets 0.40,1.35
+piano-pair sr=48000 iowa phone staccato G#5+2 det=-32 ioi=0.81 g2=0.98 lvl=-27dB seed=1848: heard [79.76@0.39(energy), 69.82@1.21(flux)] truth onsets 0.40,1.21
+piano-pair sr=48000 iowa noisy legato G2+8 det=-21 ioi=0.47 g2=1.10 lvl=-25dB seed=1856: heard [42.87@0.41(energy), 50.86@0.96(pitch)] truth onsets 0.40,0.87
+piano-pair sr=48000 salamander noisy staccato G2+6 det=11 ioi=0.48 g2=0.52 lvl=-26dB seed=1863: heard [43.12@0.41(energy), 48.99@1.03(pitch)] truth onsets 0.40,0.88
+piano-pair sr=48000 iowa noisy legato C3-2 det=39 ioi=0.67 g2=0.67 lvl=-1dB seed=1874: heard [48.45@0.41(energy), 46.44@1.16(flux)] truth onsets 0.40,1.07
+piano-pair sr=48000 iowa noisy staccato A2-2 det=-24 ioi=0.70 g2=0.72 lvl=-13dB seed=1892: heard [44.82@0.42(energy), 42.85@1.21(pitch)] truth onsets 0.40,1.10
+piano-pair sr=48000 iowa noisy pedal C3-9 det=-39 ioi=1.10 g2=0.78 lvl=-13dB seed=1910: heard [47.65@0.41(energy)] truth onsets 0.40,1.50
+piano-pair sr=48000 salamander noisy pedal C2+3 det=-28 ioi=1.18 g2=0.62 lvl=-17dB seed=1917: heard [35.77@0.41(energy), 38.80@1.66(energy)] truth onsets 0.40,1.58
+piano-pair sr=48000 iowa noisy legato A5+8 det=-33 ioi=0.49 g2=0.68 lvl=-24dB seed=1958: heard [80.76@0.41(energy), 69.55@0.90(energy)] truth onsets 0.40,0.89
+piano-pair sr=48000 salamander noisy pedal G3-10 det=-21 ioi=0.79 g2=0.83 lvl=-16dB seed=1971: heard [54.79@0.41(energy)] truth onsets 0.40,1.19
+piano-pair sr=48000 salamander noisy staccato F2-2 det=-9 ioi=0.56 g2=0.52 lvl=-0dB seed=1983: heard [40.93@0.41(energy), 38.94@1.11(pitch)] truth onsets 0.40,0.96
+piano-pair sr=48000 iowa noisy pedal A#4-5 det=11 ioi=1.04 g2=1.29 lvl=-18dB seed=1994: heard [65.19@1.46(energy)] truth onsets 0.40,1.44
+piano-pair sr=48000 iowa noisy pedal C#2+5 det=0 ioi=0.59 g2=0.58 lvl=-9dB seed=2006: heard [37.10@0.41(energy)] truth onsets 0.40,0.99
+piano-pair sr=48000 salamander phone legato F#5+6 det=20 ioi=0.67 g2=0.69 lvl=-7dB seed=2089: heard [78.25@0.39(energy)] truth onsets 0.40,1.07
+piano-pair sr=48000 iowa noisy legato F#5+11 det=-33 ioi=0.84 g2=1.26 lvl=-7dB seed=2090: heard [77.66@0.41(energy), 76.74@1.24(flux)] truth onsets 0.40,1.24
+piano-pair sr=48000 iowa noisy staccato C3+11 det=17 ioi=0.43 g2=0.59 lvl=-26dB seed=2120: heard [48.22@0.41(energy)] truth onsets 0.40,0.83
+piano-pair sr=48000 iowa noisy pedal B5+12 det=17 ioi=0.50 g2=0.69 lvl=-21dB seed=2132: heard [83.26@0.41(energy)] truth onsets 0.40,0.90
+piano-pair sr=48000 salamander noisy pedal C4-8 det=28 ioi=0.50 g2=0.79 lvl=-11dB seed=2145: heard [60.29@0.41(energy), 52.29@0.98(pitch)] truth onsets 0.40,0.90
+piano-pair sr=48000 iowa noisy pedal D#5+11 det=-24 ioi=0.84 g2=1.06 lvl=-25dB seed=2174: heard [74.79@0.42(energy), 73.83@1.25(flux)] truth onsets 0.40,1.24
+piano-pair sr=48000 salamander noisy pedal F5-9 det=-46 ioi=0.98 g2=0.51 lvl=-2dB seed=2199: heard [76.58@0.41(energy)] truth onsets 0.40,1.38
+piano-pair sr=44100 salamander phone pedal D2+7 det=-49 ioi=0.41 g2=0.89 lvl=-27dB seed=9003: heard [37.54@0.39(energy)] truth onsets 0.40,0.81
+piano-pair sr=44100 salamander noisy pedal A2+4 det=3 ioi=0.46 g2=0.57 lvl=-30dB seed=9011: heard [45.04@0.41(energy), 49.02@1.02(flux)] truth onsets 0.40,0.86
+piano-pair sr=44100 salamander noisy legato F#5+2 det=10 ioi=1.03 g2=1.22 lvl=-30dB seed=9017: heard [78.15@0.41(energy)] truth onsets 0.40,1.43
+piano-pair sr=44100 salamander noisy staccato C#5+7 det=33 ioi=0.83 g2=0.65 lvl=-28dB seed=9029: heard [73.40@0.49(flux), 80.34@1.24(energy)] truth onsets 0.40,1.23
+piano-pair sr=44100 salamander phone staccato F#4-5 det=12 ioi=0.80 g2=1.22 lvl=-24dB seed=9033: heard [66.11@0.39(energy), 73.12@1.20(flux)] truth onsets 0.40,1.20
+piano-pair sr=44100 iowa noisy pedal C3+6 det=-41 ioi=0.51 g2=1.47 lvl=-9dB seed=9070: heard [47.63@0.42(energy)] truth onsets 0.40,0.91
+piano-pair sr=44100 iowa phone pedal A5-2 det=-3 ioi=0.59 g2=0.54 lvl=-24dB seed=9074: heard [81.07@0.39(energy), 79.77@1.00(flux), 80.84@1.11(pitch)] truth onsets 0.40,0.99
+piano-pair sr=44100 iowa noisy pedal C#4+7 det=2 ioi=1.14 g2=0.82 lvl=-7dB seed=9094: heard [61.10@0.41(energy), 49.12@1.63(voiced)] truth onsets 0.40,1.54
+piano-pair sr=44100 salamander noisy pedal G3-12 det=-45 ioi=0.57 g2=0.75 lvl=-13dB seed=9095: heard [54.54@0.41(energy)] truth onsets 0.40,0.97
+piano-pair sr=44100 salamander noisy legato E5+10 det=15 ioi=0.96 g2=0.70 lvl=-25dB seed=9161: heard [76.20@0.41(energy), 74.30@1.36(energy)] truth onsets 0.40,1.36
+piano-pair sr=44100 iowa noisy legato F#2+7 det=24 ioi=0.61 g2=1.43 lvl=-29dB seed=9166: heard [49.36@1.03(energy)] truth onsets 0.40,1.01
+piano-pair sr=44100 salamander noisy legato D#5+12 det=-46 ioi=1.01 g2=0.56 lvl=-21dB seed=9179: heard [74.58@0.41(energy)] truth onsets 0.40,1.41
+piano-pair sr=44100 salamander noisy legato G#5+5 det=48 ioi=0.50 g2=0.59 lvl=-7dB seed=9191: heard [80.57@0.41(energy)] truth onsets 0.40,0.90
+piano-pair sr=44100 iowa noisy pedal E2+5 det=6 ioi=0.52 g2=0.85 lvl=-21dB seed=9214: heard [40.15@0.41(energy)] truth onsets 0.40,0.92
+piano-pair sr=44100 iowa noisy pedal D#5+10 det=-36 ioi=0.84 g2=0.81 lvl=-23dB seed=9220: heard [74.68@0.41(energy), 72.74@1.24(energy)] truth onsets 0.40,1.24
+piano-pair sr=44100 iowa clean pedal G2+3 det=-31 ioi=0.58 g2=0.67 lvl=-16dB seed=9246: heard [42.77@0.39(energy)] truth onsets 0.40,0.98
+piano-pair sr=44100 iowa phone pedal F#4-12 det=-46 ioi=0.42 g2=0.53 lvl=-20dB seed=9254: heard [65.60@0.39(energy)] truth onsets 0.40,0.82
+piano-pair sr=44100 salamander noisy pedal D#2+11 det=-6 ioi=0.60 g2=0.71 lvl=-17dB seed=9257: heard [38.99@0.41(energy)] truth onsets 0.40,1.00
+piano-pair sr=44100 salamander noisy staccato A2+5 det=-9 ioi=0.44 g2=0.54 lvl=-3dB seed=9281: heard [44.94@0.41(energy), 49.90@0.93(pitch)] truth onsets 0.40,0.84
+piano-pair sr=44100 iowa noisy pedal A3+8 det=-5 ioi=0.71 g2=0.88 lvl=-29dB seed=9292: heard [57.02@0.41(energy), 53.02@1.11(energy)] truth onsets 0.40,1.11
+voice-pair noisy high ah gap A5-8 off=-10,-16 scoop=-149,0 vib=30 seed=5005: heard [80.84@0.34(energy), 72.81@1.67(voiced)] truth 80.90@0.30, 72.84@1.52
+voice-pair noisy high oo legato D#4+7 off=8,-13 scoop=-120,-126 vib=22 seed=5017: heard [63.10@0.41(energy), 50.80@1.78(voiced)] truth 63.08@0.30, 69.87@1.64
+voice-pair noisy high oo legato A5-5 off=8,-15 scoop=-151,-162 vib=57 seed=5029: heard [81.02@0.34(energy), 76.08@1.71(voiced)] truth 81.08@0.30, 75.85@1.25
+voice-pair noisy high ee gap C#4+7 off=6,-17 scoop=46,-119 vib=17 seed=5035: heard [61.07@0.32(energy), 67.64@1.92(voiced)] truth 61.06@0.30, 67.83@1.38
+voice-pair noisy high oo gap D#4-5 off=-3,-14 scoop=-102,-119 vib=60 seed=5041: heard [63.00@0.35(energy)] truth 62.97@0.30, 57.86@1.51
+voice-pair noisy high oo legato D#5-6 off=7,14 scoop=-173,0 vib=21 seed=5047: heard [75.09@0.60(voiced), 69.17@1.12(pitch)] truth 75.07@0.30, 69.14@1.13
+voice-pair noisy high eh legato G5-5 off=12,15 scoop=-109,-177 vib=44 seed=5053: heard [74.00@1.60(energy)] truth 79.12@0.30, 74.15@1.60
+voice-pair phone low ee gap D4+1 off=6,-4 scoop=0,-98 vib=35 seed=5056: heard [62.16@0.31(energy), 62.96@1.45(pitch)] truth 62.06@0.30, 62.96@1.30
+voice-pair noisy low ah legato F#3+1 off=14,-6 scoop=-164,-202 vib=0 seed=5058: heard [54.12@0.34(energy), 54.92@1.74(pitch)] truth 54.14@0.30, 54.94@1.50
+voice-pair noisy high eh gap D#5+4 off=-2,19 scoop=-102,-189 vib=54 seed=5059: heard [74.98@0.34(energy), 79.26@2.17(voiced)] truth 74.98@0.30, 79.19@1.94
+voice-pair noisy high eh legato C#5+5 off=-9,1 scoop=-127,-198 vib=58 seed=5065: heard [72.86@0.35(energy)] truth 72.91@0.30, 78.01@1.14
+voice-pair noisy low eh gap C#4+3 off=-4,-5 scoop=-189,93 vib=0 seed=5088: heard [60.95@0.34(energy), 63.95@1.65(voiced)] truth 60.96@0.30, 63.95@1.44
+voice-pair noisy high oo gap G4-9 off=14,-6 scoop=79,-212 vib=40 seed=5089: heard [67.28@0.79(voiced), 57.87@1.86(voiced)] truth 67.14@0.30, 57.94@1.80
+voice-pair noisy low oo gap C4-5 off=19,5 scoop=65,-164 vib=29 seed=5112: heard [60.16@0.35(energy), 55.08@2.03(voiced)] truth 60.19@0.30, 55.05@1.84
+voice-pair noisy high ee legato E5-10 off=8,-13 scoop=-247,-177 vib=0 seed=5113: heard [65.82@1.47(energy)] truth 76.08@0.30, 65.87@1.48
+voice-pair noisy high eh gap C5+7 off=18,9 scoop=101,-244 vib=58 seed=5125: heard [72.24@0.34(energy)] truth 72.18@0.30, 79.09@1.47
+voice-pair phone high ah legato D#5+1 off=18,-20 scoop=79,0 vib=0 seed=5129: heard [75.48@0.31(energy)] truth 75.18@0.30, 75.80@1.61
+voice-pair noisy low oo legato F#3-4 off=-9,-7 scoop=-197,-153 vib=49 seed=5130: heard [53.91@0.46(voiced), 49.89@1.56(pitch)] truth 53.91@0.30, 49.93@1.49
+voice-pair noisy high ee legato C#5-11 off=-13,14 scoop=-154,-216 vib=16 seed=5143: heard [62.06@1.54(energy)] truth 72.87@0.30, 62.14@1.55
+voice-pair noisy high eh gap C5-10 off=15,-1 scoop=72,-214 vib=45 seed=5155: heard [72.10@0.47(energy)] truth 72.15@0.30, 61.99@1.25
+voice-pair noisy low ee legato F#3+6 off=-5,17 scoop=-137,-118 vib=0 seed=5160: heard [60.16@1.38(energy)] truth 53.95@0.30, 60.17@1.33
+voice-pair noisy high oo gap A3+4 off=-12,-18 scoop=-107,0 vib=31 seed=5161: heard [56.85@0.52(voiced), 60.81@1.78(energy)] truth 56.88@0.30, 60.82@1.67
+voice-pair noisy high oo gap A#4-8 off=20,9 scoop=-104,0 vib=41 seed=5179: heard [62.08@1.42(energy)] truth 70.20@0.30, 62.09@1.37
+voice-pair noisy low oo legato D3-6 off=-19,10 scoop=-131,-90 vib=15 seed=5190: heard [49.77@0.36(voiced)] truth 49.81@0.30, 44.10@1.61
+voice-pair noisy high ee legato C#4-1 off=-6,-2 scoop=-160,-100 vib=0 seed=5191: heard [59.97@1.60(voiced)] truth 60.94@0.30, 59.98@1.64
+voice-pair noisy high oo gap G4+11 off=-17,14 scoop=0,-66 vib=0 seed=5197: heard [66.84@0.35(energy), 78.13@1.96(voiced)] truth 66.83@0.30, 78.14@1.75
+voice-pair noisy high ee gap A5-10 off=5,-18 scoop=-81,97 vib=0 seed=5209: heard [70.84@2.03(energy)] truth 81.05@0.30, 70.82@1.97
+voice-pair noisy high ee gap E4+12 off=-9,3 scoop=-192,-51 vib=17 seed=5227: heard [63.84@0.34(energy)] truth 63.91@0.30, 76.03@1.43
+voice-pair noisy low oo gap F#3-1 off=14,1 scoop=-74,-81 vib=0 seed=5238: heard [54.11@0.35(voiced)] truth 54.14@0.30, 53.01@1.57
+voice-pair noisy high oo legato F#5+3 off=-19,4 scoop=0,-91 vib=0 seed=5239: heard [77.79@0.48(voiced), 80.92@1.33(pitch)] truth 77.81@0.30, 81.04@1.37
+voice-pair noisy low eh legato C4-10 off=0,-4 scoop=0,-122 vib=56 seed=5244: heard [59.98@0.46(voiced)] truth 60.00@0.30, 49.96@1.68
+voice-pair noisy low ee legato D4-11 off=-4,-5 scoop=-83,-54 vib=0 seed=5262: heard [61.95@0.34(energy)] truth 61.96@0.30, 50.95@1.53
+voice-pair noisy high oo legato A3+12 off=16,13 scoop=110,-236 vib=16 seed=5269: heard [57.16@0.39(energy), 69.12@1.75(pitch)] truth 57.16@0.30, 69.13@1.54
+voice-pair noisy high eh legato G#4+10 off=6,13 scoop=-230,-148 vib=48 seed=5281: heard [68.05@0.34(voiced), 78.09@1.66(pitch)] truth 68.06@0.30, 78.13@1.47
+voice-pair noisy low oo legato E4-10 off=7,13 scoop=-154,-182 vib=0 seed=5298: heard [64.02@0.32(energy), 54.05@1.71(pitch)] truth 64.07@0.30, 54.13@1.53
+voice-pair noisy high ah legato A5-4 off=18,-19 scoop=58,-75 vib=0 seed=5305: heard [76.79@1.35(voiced)] truth 81.18@0.30, 76.81@1.37
+voice-pair noisy low ee gap G3+7 off=14,0 scoop=72,0 vib=27 seed=5310: heard [61.97@1.56(energy)] truth 55.14@0.30, 62.00@1.49
+voice-pair noisy high eh legato A#4-12 off=-16,20 scoop=0,-152 vib=0 seed=5323: heard [69.82@0.36(energy)] truth 69.84@0.30, 58.20@1.43
+voice-pair noisy high eh legato C#4+5 off=17,17 scoop=-192,100 vib=53 seed=5335: heard [61.13@0.35(energy), 66.18@1.92(voiced)] truth 61.17@0.30, 66.17@1.41
+voice-pair noisy high ah gap F#4+4 off=0,18 scoop=-105,-72 vib=48 seed=5347: heard [65.95@0.38(energy), 70.11@1.87(voiced)] truth 66.00@0.30, 70.18@1.42
+voice-pair noisy high eh gap G4+6 off=4,-13 scoop=-216,92 vib=57 seed=5371: heard [72.88@1.44(energy)] truth 67.04@0.30, 72.87@1.38
+voice-pair noisy high oo gap C5-8 off=-4,13 scoop=-101,-116 vib=47 seed=5389: heard [64.12@2.05(energy)] truth 71.96@0.30, 64.13@1.94
+voice-pair noisy high oo gap A4-9 off=13,10 scoop=-207,-79 vib=53 seed=5395: heard [69.13@0.76(voiced), 60.11@1.86(energy)] truth 69.13@0.30, 60.10@1.77
+voice-pair noisy high ah legato G5-9 off=13,18 scoop=0,-195 vib=18 seed=5401: heard [79.13@0.34(voiced)] truth 79.13@0.30, 70.18@1.47
+voice-pair noisy high eh gap G#4+5 off=-17,7 scoop=0,-52 vib=22 seed=5407: heard [73.07@1.44(energy)] truth 67.83@0.30, 73.07@1.40
+voice-pair noisy high ah legato G4+11 off=10,-16 scoop=-94,-218 vib=49 seed=5413: heard [77.75@1.14(voiced)] truth 67.10@0.30, 77.84@1.15
+voice-pair noisy low ah legato C#3+1 off=-14,-4 scoop=-107,-140 vib=0 seed=5418: heard [48.87@0.35(energy), 49.95@1.33(pitch)] truth 48.86@0.30, 49.96@1.18
+voice-pair noisy high ee gap B3+6 off=3,-13 scoop=-65,65 vib=29 seed=5419: heard [59.05@0.35(energy), 64.79@1.73(voiced)] truth 59.03@0.30, 64.87@1.57
+voice-pair noisy high oo gap F5-11 off=6,-18 scoop=-120,0 vib=49 seed=5443: heard [65.91@1.51(energy)] truth 77.06@0.30, 65.82@1.46
+voice-pair noisy low oo legato B3-2 off=-7,15 scoop=-163,0 vib=0 seed=5448: heard [58.90@0.41(energy)] truth 58.93@0.30, 57.15@1.54
+voice-pair noisy high ee legato D#4+10 off=-3,-1 scoop=-163,-239 vib=42 seed=5449: heard [62.88@0.35(voiced)] truth 62.97@0.30, 72.99@1.29
+voice-pair noisy high ee gap F#4+11 off=1,7 scoop=-154,48 vib=46 seed=5461: heard [65.99@0.42(energy)] truth 66.01@0.30, 77.07@1.46
+voice-pair phone high ah legato D#4-1 off=-18,12 scoop=-237,59 vib=0 seed=5465: heard [62.72@0.31(energy), 62.11@1.99(pitch)] truth 62.82@0.30, 62.12@1.56
+voice-pair noisy high oo legato D5+6 off=-17,10 scoop=-148,-155 vib=21 seed=5485: heard [73.77@0.46(voiced), 80.06@1.59(voiced)] truth 73.83@0.30, 80.10@1.60
+voice-pair noisy high oo gap D#5-5 off=10,-12 scoop=-189,0 vib=0 seed=5491: heard [69.89@1.62(voiced)] truth 75.10@0.30, 69.88@1.58
+voice-pair noisy low eh legato G2+11 off=5,-9 scoop=0,-124 vib=25 seed=5502: heard [53.83@1.14(voiced)] truth 43.05@0.30, 53.91@1.14
+voice-pair noisy high oo legato F4+1 off=-7,-9 scoop=-195,0 vib=35 seed=5503: heard [64.92@0.36(energy)] truth 64.93@0.30, 65.91@1.66
+voice-pair noisy high ah legato B4+9 off=0,7 scoop=-94,80 vib=0 seed=5509: heard [70.95@0.57(voiced), 80.06@1.61(voiced)] truth 71.00@0.30, 80.07@1.45
+voice-pair noisy high ah gap C5+4 off=-18,-7 scoop=-202,-223 vib=0 seed=5515: heard [71.70@0.62(voiced), 75.84@1.73(voiced)] truth 71.82@0.30, 75.93@1.70
+voice-pair noisy high eh gap G#4+2 off=9,15 scoop=-197,-179 vib=18 seed=5527: heard [70.11@1.86(energy)] truth 68.09@0.30, 70.15@1.79
+voice-pair noisy high eh gap C#5+5 off=-15,-1 scoop=-88,89 vib=0 seed=5545: heard [72.83@0.35(energy)] truth 72.85@0.30, 77.99@1.45
+voice-pair noisy low oo gap F#3+3 off=9,-20 scoop=-192,-194 vib=0 seed=5556: heard [54.08@0.68(voiced), 56.74@1.70(voiced)] truth 54.09@0.30, 56.80@1.65
+voice-pair noisy high oo legato E5+1 off=15,-5 scoop=-178,-250 vib=32 seed=5563: heard [76.09@0.36(energy), 76.90@1.69(pitch)] truth 76.15@0.30, 76.95@1.47
+voice-pair noisy high eh gap A#4-11 off=9,12 scoop=-128,-241 vib=30 seed=5569: heard [70.06@0.36(energy), 59.15@1.98(voiced)] truth 70.09@0.30, 59.12@1.61
+voice-pair noisy low ee gap G#2+11 off=-8,15 scoop=-97,-54 vib=0 seed=5574: heard [55.14@1.40(voiced)] truth 43.92@0.30, 55.15@1.34
+voice-pair noisy high ah legato A5-4 off=-8,-20 scoop=-118,-102 vib=0 seed=5575: heard [76.76@1.67(voiced)] truth 80.92@0.30, 76.80@1.69
+voice-pair noisy high eh gap F#5-9 off=15,4 scoop=111,-228 vib=40 seed=5593: heard [78.19@0.52(voiced), 69.06@1.81(energy)] truth 78.15@0.30, 69.04@1.73
+voice-pair noisy high oo legato C#4+4 off=-15,12 scoop=-93,-205 vib=40 seed=5605: heard [60.81@0.36(voiced)] truth 60.85@0.30, 65.12@1.23
+voice-pair noisy low ah legato E4-7 off=19,12 scoop=-133,0 vib=0 seed=5622: heard [64.17@0.35(energy), 57.14@1.89(pitch)] truth 64.19@0.30, 57.12@1.66
+voice-pair noisy low ee gap B3-9 off=-13,-11 scoop=-97,-162 vib=21 seed=5634: heard [58.84@0.42(energy)] truth 58.87@0.30, 49.89@1.71
+voice-pair noisy high eh legato A#4-8 off=-12,16 scoop=-151,-63 vib=21 seed=5635: heard [69.88@0.35(energy), 62.16@1.67(pitch)] truth 69.88@0.30, 62.16@1.39
+voice-pair noisy high oo gap F#4+10 off=-13,14 scoop=-100,-228 vib=0 seed=5641: heard [65.87@0.34(energy)] truth 65.87@0.30, 76.14@1.87
+voice-pair noisy high oo legato F4+2 off=16,16 scoop=-74,-247 vib=0 seed=5677: heard [65.19@0.34(energy), 67.14@1.44(pitch)] truth 65.16@0.30, 67.16@1.27
+voice-pair noisy high eh legato B3+1 off=-11,6 scoop=0,-194 vib=20 seed=5689: heard [58.90@0.34(voiced), 59.95@0.84(energy)] truth 58.89@0.30, 60.06@1.12
+voice-pair noisy high ee legato D#4+7 off=9,15 scoop=-94,0 vib=0 seed=5695: heard [62.98@0.32(energy)] truth 63.09@0.30, 70.15@1.25
+voice-pair noisy high ah legato B4+4 off=11,20 scoop=-147,43 vib=48 seed=5719: heard [71.02@0.47(voiced), 75.19@1.37(voiced)] truth 71.11@0.30, 75.20@1.49
+voice-pair noisy high oo gap F#4+10 off=-10,-11 scoop=-122,-108 vib=0 seed=5725: heard [65.87@0.36(energy)] truth 65.90@0.30, 75.89@1.87
+voice-pair noisy high oo legato F4+10 off=3,17 scoop=-87,-189 vib=45 seed=5731: heard [64.99@0.35(energy)] truth 65.03@0.30, 75.17@1.12
+voice-pair noisy low oo gap E4-12 off=-7,-14 scoop=-200,0 vib=15 seed=5736: heard [63.92@0.35(energy), 51.83@1.83(voiced)] truth 63.93@0.30, 51.86@1.67
+voice-pair noisy high ee legato D#5+6 off=-8,4 scoop=-148,-190 vib=54 seed=5737: heard [74.85@0.36(energy), 80.87@2.33(voiced)] truth 74.92@0.30, 81.04@1.69
+voice-pair noisy low ee legato F3+10 off=16,-12 scoop=-199,-216 vib=29 seed=5742: heard [53.08@0.41(energy), 62.87@1.30(pitch)] truth 53.16@0.30, 62.88@1.12
+voice-pair noisy high oo legato C#4+5 off=-19,11 scoop=-164,0 vib=0 seed=5743: heard [60.83@0.41(energy)] truth 60.81@0.30, 66.11@1.34
+voice-pair noisy low oo gap D4+2 off=-19,11 scoop=-238,-181 vib=59 seed=5754: heard [61.75@0.76(energy), 64.03@1.75(voiced)] truth 61.81@0.30, 64.11@1.72
+voice-pair noisy low ah legato A#3+1 off=-7,4 scoop=-181,-245 vib=0 seed=5760: heard [57.92@0.36(energy), 58.98@1.81(pitch)] truth 57.93@0.30, 59.04@1.66
+voice-pair noisy high ah legato G4+11 off=17,-18 scoop=-239,-113 vib=0 seed=5773: heard [77.80@1.24(voiced)] truth 67.17@0.30, 77.82@1.25
+voice-pair phone high ee gap D4+11 off=9,8 scoop=112,61 vib=0 seed=5795: heard [62.10@0.31(energy)] truth 62.09@0.30, 73.08@1.55
+voice-pair noisy high ee gap D4+6 off=18,17 scoop=-147,-142 vib=0 seed=5809: heard [62.18@0.36(energy)] truth 62.18@0.30, 68.17@1.28
+voice-pair noisy high oo gap D4+8 off=-17,-1 scoop=-97,-168 vib=17 seed=5815: heard [61.83@0.44(energy), 70.09@1.87(voiced)] truth 61.83@0.30, 69.99@1.67
+voice-pair noisy low ee legato D4-11 off=-8,-6 scoop=-125,-219 vib=34 seed=5838: heard [61.90@0.34(energy), 50.97@1.59(voiced)] truth 61.92@0.30, 50.94@1.21
+voice-pair noisy high ee legato D#5-10 off=7,-1 scoop=53,-210 vib=30 seed=5839: heard [64.91@1.23(energy)] truth 75.07@0.30, 64.99@1.24
+voice-pair noisy high eh gap E5-6 off=9,2 scoop=-62,-190 vib=55 seed=5845: heard [75.83@0.69(voiced), 70.00@1.83(energy)] truth 76.09@0.30, 70.02@1.76
+voice-pair noisy high oo gap G4+12 off=11,2 scoop=-132,-126 vib=50 seed=5851: heard [67.03@0.37(energy), 79.07@2.22(voiced)] truth 67.11@0.30, 79.02@1.72
+voice-pair noisy high ee legato B4-10 off=-10,10 scoop=-226,-96 vib=18 seed=5857: heard [61.06@1.13(voiced)] truth 70.90@0.30, 61.10@1.13
+voice-pair phone high ee legato C#4+7 off=12,14 scoop=-125,0 vib=0 seed=5867: heard [61.09@0.31(energy), 68.13@1.42(pitch)] truth 61.12@0.30, 68.14@1.20
+voice-pair noisy high ah legato F#5-5 off=13,-14 scoop=-191,0 vib=19 seed=5875: heard [78.06@0.34(energy), 72.86@1.85(pitch)] truth 78.13@0.30, 72.86@1.69
+voice-pair noisy high ah gap G5-12 off=16,13 scoop=-239,62 vib=0 seed=5881: heard [79.04@0.33(voiced), 67.12@1.50(voiced)] truth 79.16@0.30, 67.13@1.31
+voice-pair noisy high oo legato C#5-9 off=11,-14 scoop=-192,-229 vib=42 seed=5887: heard [63.75@1.32(energy)] truth 73.11@0.30, 63.86@1.26
+self-listen gap=0.1 E2+1 seed=20181: heard [39.56@1.02(energy), 40.52@1.56(pitch)] truth 1.02,1.44
+self-listen gap=0.3 F2-3 seed=20343: heard [40.68@0.47(energy), 37.67@1.17(flux)] truth 0.47,1.01
+self-listen gap=0.3 E2+7 seed=20393: heard [39.54@1.39(energy)] truth 1.38,2.10
+self-listen gap=0.5 F5+12 seed=20542: heard [76.92@0.53(energy)] truth 0.54,1.70

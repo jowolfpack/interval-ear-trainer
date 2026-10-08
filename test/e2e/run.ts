@@ -8,8 +8,8 @@ import puppeteer from 'puppeteer-core';
 import { createServer } from 'node:http';
 import { readFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, extname } from 'node:path';
-import { writeWav, mixInto, ROOT } from '../harness/audio.ts';
-import { pianoNote, iowaAvailable } from '../harness/sources.ts';
+import { writeWav, mixInto, rng, ROOT } from '../harness/audio.ts';
+import { pianoNote, iowaAvailable, voicePhrase } from '../harness/sources.ts';
 import { applyCondition } from '../harness/scenarios.ts';
 
 const CHROME = process.env.CHROME ?? [
@@ -95,7 +95,35 @@ try {
   check(errors.length === 0, `no page errors${errors.length ? ': ' + errors.join(' | ') : ''}`);
 } finally {
   await browser.close();
-  server.close();
+}
+
+// --- Voice: a synthetic singer (A3 → E4 with scoop + vibrato) on the fake mic.
+{
+  const v = voicePhrase({ sampleRate: SR, seed: rng(3), vowel: 'ah', notes: [
+    { midi: 57, duration: 1.0, scoopCents: -150, vibratoCents: 35, gapAfter: 0.25 },
+    { midi: 64, duration: 1.1, scoopCents: -120, vibratoCents: 35 },
+  ], leadIn: 1.0 });
+  const y = new Float32Array(6 * SR);
+  for (let i = 0; i < Math.min(y.length, v.data.length); i++) y[i] = 0.15 * v.data[i];
+  const vwav = join(OUT, 'fake-mic-voice.wav');
+  writeWav(vwav, applyCondition(y, SR, 'phone', 9), SR);
+  const b2 = await puppeteer.launch({ executablePath: CHROME, headless: true, args: ['--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', `--use-file-for-fake-audio-capture=${vwav}`] });
+  try {
+    const page = await b2.newPage();
+    await page.goto('http://localhost:4179/#/mic', { waitUntil: 'networkidle0' });
+    const [, voiceBtn] = await page.$$('.seg button');
+    await voiceBtn.click();
+    await page.click('button.primary');
+    await new Promise((r) => setTimeout(r, 9000));
+    const log = await page.$$eval('.log li .n', (els) => els.map((e) => e.textContent ?? ''));
+    console.log('Mic Test (voice) log:', log.join(' '));
+    check(log.includes('A3') && log.includes('E4'), 'Mic Test (voice mode) logs A3 and E4 from the synthetic singer');
+    check(log.every((n) => n === 'A3' || n === 'E4'), 'Mic Test (voice mode) logs no spurious notes');
+    await page.screenshot({ path: join(OUT, 'mictest-voice.png') });
+  } finally {
+    await b2.close();
+    server.close();
+  }
 }
 console.log(failures ? `${failures} check(s) failed` : 'all e2e checks passed');
 process.exit(failures ? 1 : 0);

@@ -75,7 +75,7 @@ export class NoteSegmenter {
   gateOnDb = 10;
   gateOffDb = 7;
   minDb = -72;
-  fluxRatio = 2.2;
+  fluxRatio = 2.0;
   fluxMin = 0.2;
   fluxRiseDb = 2.0;
 
@@ -168,7 +168,7 @@ export class NoteSegmenter {
       // A sudden level jump is an onset even when noise makes the flux unreliable.
       const jump = fr.db - prev.db;
       const fluxHit = isPeak && fr.flux > thr && rise > this.fluxRiseDb;
-      if ((fluxHit || (rise > 6 && jump > 3)) && fr.db > onThr - 6) {
+      if ((fluxHit || (rise > 4 && jump > 3)) && fr.db > onThr - 6) {
         this.startNote(fr, 'flux', done);
         return done;
       }

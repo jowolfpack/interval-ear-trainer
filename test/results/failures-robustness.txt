@@ -1,1 +1,1 @@
-self-listen gap=0.1 D2-4 seed=20116: heard [37.80@0.78(energy)] truth 0.78,1.28
+

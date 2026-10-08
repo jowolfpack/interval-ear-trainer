@@ -184,7 +184,7 @@ th { color: var(--muted); font-weight: 600; font-size: 0.85rem; }
 .chart .grid { stroke: var(--line); stroke-dasharray: 2 4; }
 .chart .series { fill: none; stroke: var(--accent); stroke-width: 2.5; }
 .chart .pt { fill: var(--accent); }
-.chart text { fill: var(--muted); font-size: 11px; }
+.chart text { fill: var(--muted); font-size: 22px; }
 
 /* Settings */
 .field { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }

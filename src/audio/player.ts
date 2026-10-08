@@ -103,20 +103,16 @@ export async function playNote(m: number, dur = 1.2): Promise<void> {
 }
 
 export function stopAll(): void {
-  const ctx = audioNow();
+  const now = master ? master.context.currentTime : 0;
   for (const v of active) {
     try {
-      v.gain.gain.cancelScheduledValues(ctx);
-      v.gain.gain.setValueAtTime(v.gain.gain.value, ctx);
-      v.gain.gain.linearRampToValueAtTime(0, ctx + 0.03);
-      v.src.stop(ctx + 0.05);
+      v.gain.gain.cancelScheduledValues(now);
+      v.gain.gain.setValueAtTime(v.gain.gain.value, now);
+      v.gain.gain.linearRampToValueAtTime(0, now + 0.03);
+      v.src.stop(now + 0.05);
     } catch { /* already stopped */ }
   }
   active = [];
-}
-
-function audioNow(): number {
-  return master ? master.context.currentTime : 0;
 }
 
 function waitUntil(ctx: AudioContext, t: number): Promise<void> {

@@ -39,6 +39,11 @@ considered and why. Newest concerns at the bottom of each section.
   that: compare the old note's harmonic magnitudes before/after the onset; if only the
   even harmonics jumped (+6 dB relative), it's the octave.
 
+- Tried and reverted: "if the comb-filtered and plain estimates are an octave apart,
+  trust the plain one" (aimed at a few octave-too-low readings in the C5–C6 range).
+  It dropped pedal/held-note accuracy from ~95 % to 86 %: under a ringing note the
+  plain estimate is usually the wrong one.
+
 **Onsets: level gate + spectral-flux peak + level jump + pitch change + "voiced run".**
 - Flux alone was unreliable in noise (log-magnitude flux of noise is high); a sudden
   ≥ 6 dB jump is always an onset. Pitch-change onsets are needed for legato singing.
@@ -140,6 +145,14 @@ Salamander samples the app plays. Iowa files are downloaded by a script, not com
 **Synthetic voice:** additive harmonics through a DC-normalised 3-formant cascade
 (an earlier parallel-formant version made the fundamental ~30 dB too weak, causing
 unrealistic octave+fifth errors; fixed before tuning the detector on it).
+
+**Scenario note range matches the app (C2–C7).** An early run showed ~88 % for pairs
+starting in octave 2; almost all failures were descending targets below C2 that the
+app never asks for (and the detector deliberately ignores, see the 62 Hz floor).
+
+**End-to-end test in real Chrome** (`npm run e2e`): puppeteer-core drives the built
+app with Chrome's fake microphone playing a WAV (Iowa piano pair, then a synthetic
+singer), so AudioWorklet capture, getUserMedia constraints and UI are exercised too.
 
 **Conditions:** clean; *phone* (150 Hz high-pass, 0.5 s room, 25 dB SNR); *noisy*
 (220 Hz high-pass, 0.9 s live room, mains hum, 12 dB SNR) — the last one is a stress

@@ -3,3 +3,4 @@ dist/
 test/fixtures/
 test/out/
 *.log
+test/results/full-run.log

@@ -91,19 +91,19 @@ export function statsScreen(): Screen {
     const sessions = [...bySession.entries()].sort((a, b) => a[0] - b[0]).slice(-30).map(([s, xs]) => ({
       s, n: xs.length, acc: pct(xs.filter((a) => a.correct).length, xs.length),
     }));
-    const W = 640, H = 220, L = 36, R = 12, T = 12, B = 30;
+    const W = 640, H = 300, L = 70, R = 16, T = 16, B = 44;
     const x = (i: number) => (sessions.length === 1 ? L + (W - L - R) / 2 : L + (i * (W - L - R)) / (sessions.length - 1));
     const y = (v: number) => T + ((100 - v) * (H - T - B)) / 100;
     const root = svg('svg', { viewBox: `0 0 ${W} ${H}`, class: 'chart', role: 'img', 'aria-label': `Accuracy per session, last ${sessions.length} sessions` });
     for (const v of [0, 50, 90, 100]) {
       root.append(svg('line', { x1: L, x2: W - R, y1: y(v), y2: y(v), class: v === 0 ? 'axis' : 'grid' }));
-      root.append(svg('text', { x: L - 6, y: y(v) + 4, 'text-anchor': 'end' }, `${v}%`));
+      if (v !== 100) root.append(svg('text', { x: L - 8, y: y(v) + 7, 'text-anchor': 'end' }, `${v}%`));
     }
     const fmt = (s: number) => new Date(s).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
     root.append(svg('text', { x: L, y: H - 8 }, fmt(sessions[0].s)));
     if (sessions.length > 1) root.append(svg('text', { x: W - R, y: H - 8, 'text-anchor': 'end' }, fmt(sessions[sessions.length - 1].s)));
     if (sessions.length > 1) root.append(svg('path', { class: 'series', d: sessions.map((p, i) => `${i ? 'L' : 'M'}${x(i).toFixed(1)},${y(p.acc).toFixed(1)}`).join(' ') }));
-    sessions.forEach((p, i) => root.append(svg('circle', { cx: x(i), cy: y(p.acc), r: 4.5, class: 'pt' })));
+    sessions.forEach((p, i) => root.append(svg('circle', { cx: x(i), cy: y(p.acc), r: 6, class: 'pt' })));
     // Crosshair + tooltip snapping to the nearest session.
     const hair = svg('line', { y1: T, y2: H - B, class: 'axis', style: 'display:none' });
     root.append(hair);
@@ -137,7 +137,7 @@ export function statsScreen(): Screen {
     for (let k = -12; k <= 12; k++) cols.push(k);
     const used = cols.filter((k) => xs.some((a) => a.played === k) || (k !== 0 && Math.sign(k) === sign));
     const rows = INTERVALS.map((i) => i.semis * sign).filter((t) => xs.some((a) => a.semis === t));
-    const head = h('tr', {}, h('th', { style: 'text-align:right' }, 'target ↓ / played →'), ...used.map((k) => h('th', {}, label(k))));
+    const head = h('tr', {}, h('th', { style: 'text-align:right' }, 'asked ╲ played'), ...used.map((k) => h('th', {}, label(k))));
     const trs = rows.map((t) => {
       const ofT = xs.filter((a) => a.semis === t);
       return h('tr', {}, h('th', { style: 'text-align:right;white-space:nowrap' }, intervalName(t)), ...used.map((k) => {

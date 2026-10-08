@@ -1,0 +1,19 @@
+piano-pair sr=48000 salamander noisy legato F#2+3 det=-31 ioi=0.85 g2=0.71 lvl=-11dB seed=1017: heard [41.70@0.41(energy), 44.69@1.43(pitch)] truth onsets 0.40,1.25
+piano-start-only det=49 start=41 heard=41.56,37.64
+piano-pair sr=48000 salamander noisy staccato G5+5 det=20 ioi=0.44 g2=0.58 lvl=-17dB seed=1035: heard [79.26@0.41(energy)] truth onsets 0.40,0.84
+piano-pair sr=48000 salamander noisy pedal G3+12 det=-45 ioi=0.87 g2=1.16 lvl=-4dB seed=1047: heard [54.55@0.41(energy)] truth onsets 0.40,1.27
+piano-pair sr=48000 salamander phone legato A2-3 det=-30 ioi=0.38 g2=0.64 lvl=-24dB seed=1051: heard [44.72@0.39(energy), 41.71@0.96(pitch)] truth onsets 0.40,0.78
+piano-pair sr=48000 iowa noisy pedal D2+7 det=32 ioi=0.71 g2=0.52 lvl=-22dB seed=1058: heard [38.45@0.41(energy)] truth onsets 0.40,1.11
+piano-pair sr=48000 iowa noisy legato G3+2 det=-45 ioi=0.99 g2=1.50 lvl=-10dB seed=1070: heard [54.63@0.52(voiced), 56.63@1.40(energy)] truth onsets 0.40,1.39
+piano-pair sr=48000 iowa noisy pedal B3+3 det=-20 ioi=1.05 g2=0.66 lvl=-2dB seed=1106: heard [58.90@0.41(energy), 49.90@1.46(energy)] truth onsets 0.40,1.45
+piano-pair sr=48000 salamander noisy staccato D3-6 det=-44 ioi=1.07 g2=0.77 lvl=-5dB seed=1125: heard [49.56@0.43(energy), 43.62@1.56(voiced)] truth onsets 0.40,1.47
+piano-pair sr=48000 salamander noisy pedal G2+10 det=-47 ioi=0.46 g2=0.66 lvl=-11dB seed=1149: heard [42.53@0.41(energy)] truth onsets 0.40,0.86
+piano-pair sr=48000 iowa noisy pedal A#5+11 det=17 ioi=0.97 g2=1.34 lvl=-28dB seed=1160: heard [82.26@0.41(energy), 81.27@1.37(energy)] truth onsets 0.40,1.37
+piano-pair sr=48000 iowa noisy pedal C#3+10 det=16 ioi=0.42 g2=0.81 lvl=-21dB seed=1172: heard [49.27@0.41(energy)] truth onsets 0.40,0.82
+piano-pair sr=48000 iowa noisy legato G4+3 det=-1 ioi=0.84 g2=0.62 lvl=-2dB seed=1208: heard [67.06@0.42(energy)] truth onsets 0.40,1.24
+piano-pair sr=48000 salamander noisy legato E3+7 det=48 ioi=0.64 g2=0.51 lvl=-17dB seed=1221: heard [52.48@0.41(energy)] truth onsets 0.40,1.04
+piano-pair sr=44100 salamander phone pedal D2+7 det=-49 ioi=0.41 g2=0.89 lvl=-27dB seed=9003: heard [37.54@0.39(energy)] truth onsets 0.40,0.81
+piano-pair sr=44100 iowa noisy pedal C#4-12 det=-8 ioi=0.35 g2=1.23 lvl=-11dB seed=9004: heard [49.02@0.42(energy)] truth onsets 0.40,0.75
+piano-pair sr=44100 salamander noisy pedal A2+4 det=3 ioi=0.46 g2=0.57 lvl=-30dB seed=9011: heard [45.04@0.41(energy)] truth onsets 0.40,0.86
+piano-pair sr=44100 salamander phone staccato F#4-5 det=12 ioi=0.80 g2=1.22 lvl=-24dB seed=9033: heard [66.11@0.39(energy), 73.12@1.20(flux)] truth onsets 0.40,1.20
+piano-pair sr=44100 iowa noisy pedal A3-10 det=-32 ioi=0.58 g2=0.84 lvl=-19dB seed=9058: heard [56.76@0.41(energy)] truth onsets 0.40,0.98

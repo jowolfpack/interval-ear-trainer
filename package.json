@@ -1,0 +1,21 @@
+{
+  "name": "interval-ear-trainer",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "fetch-fixtures": "node scripts/fetch-fixtures.mjs",
+    "test": "tsx --test test/unit/*.test.ts",
+    "harness": "tsx test/harness/run.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "pitchy": "^4.1.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.3"
+  }
+}

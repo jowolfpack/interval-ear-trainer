@@ -1,0 +1,56 @@
+voice-pair clean low ee legato D4+1 off=-9,-18 scoop=-193,-127 vib=0 seed=5000: heard [61.90@0.30(energy), 62.79@1.55(pitch)] truth 61.91@0.30, 62.82@1.44
+voice-pair noisy high ah gap A5-8 off=-10,-16 scoop=-149,0 vib=30 seed=5005: heard [80.84@0.34(energy), 72.81@1.69(voiced)] truth 80.90@0.30, 72.84@1.52
+voice-pair noisy high ee gap D#4+4 off=-15,13 scoop=63,-167 vib=49 seed=5011: heard [62.86@0.36(energy), 67.19@2.08(voiced)] truth 62.85@0.30, 67.13@1.57
+voice-pair clean low eh legato C#3+1 off=4,-13 scoop=0,-141 vib=39 seed=5012: heard [49.04@0.30(energy), 49.87@1.67(pitch)] truth 49.04@0.30, 49.87@1.57
+voice-pair noisy low eh gap G#3-11 off=19,-11 scoop=-206,-55 vib=20 seed=5016: heard [56.19@0.50(energy), 32.88@1.88(voiced)] truth 56.19@0.30, 44.89@1.82
+voice-pair noisy high oo legato D#4+7 off=8,-13 scoop=-120,-126 vib=22 seed=5017: heard [63.10@0.41(energy)] truth 63.08@0.30, 69.87@1.64
+voice-pair phone low ah legato C#4-8 off=-18,7 scoop=-94,-197 vib=0 seed=5020: heard [60.82@0.31(energy), 53.07@1.29(pitch)] truth 60.82@0.30, 53.07@1.15
+voice-pair noisy low eh gap F#2+11 off=3,17 scoop=-185,-188 vib=30 seed=5022: heard [42.00@0.42(energy), 53.13@1.83(energy)] truth 42.03@0.30, 53.17@1.79
+voice-pair clean low eh legato D3-8 off=5,-2 scoop=-60,-213 vib=59 seed=5024: heard [50.03@0.30(energy), 41.97@1.30(pitch)] truth 50.05@0.30, 41.98@1.22
+voice-pair noisy high oo legato A5-5 off=8,-15 scoop=-151,-162 vib=57 seed=5029: heard [81.02@0.34(energy), 76.08@1.72(voiced)] truth 81.08@0.30, 75.85@1.25
+voice-pair noisy high ee gap C#4+7 off=6,-17 scoop=46,-119 vib=17 seed=5035: heard [61.07@0.32(energy), 67.52@1.48(voiced)] truth 61.06@0.30, 67.83@1.38
+voice-pair noisy high oo gap D#4-5 off=-3,-14 scoop=-102,-119 vib=60 seed=5041: heard [63.00@0.35(energy)] truth 62.97@0.30, 57.86@1.51
+voice-pair noisy high oo legato D#5-6 off=7,14 scoop=-173,0 vib=21 seed=5047: heard [74.68@0.46(voiced), 69.17@1.12(pitch)] truth 75.07@0.30, 69.14@1.13
+voice-pair noisy high eh legato G5-5 off=12,15 scoop=-109,-177 vib=44 seed=5053: heard [74.00@1.60(energy)] truth 79.12@0.30, 74.15@1.60
+voice-pair phone low ee gap D4+1 off=6,-4 scoop=0,-98 vib=35 seed=5056: heard [62.16@0.31(energy), 62.96@1.45(pitch)] truth 62.06@0.30, 62.96@1.30
+voice-pair noisy low ah legato F#3+1 off=14,-6 scoop=-164,-202 vib=0 seed=5058: heard [54.12@0.34(energy), 54.92@1.74(pitch)] truth 54.14@0.30, 54.94@1.50
+voice-pair noisy high eh gap D#5+4 off=-2,19 scoop=-102,-189 vib=54 seed=5059: heard [74.98@0.34(energy)] truth 74.98@0.30, 79.19@1.94
+voice-pair noisy low eh gap G#2+9 off=-1,19 scoop=-126,-149 vib=52 seed=5064: heard [44.03@0.44(voiced), 53.17@1.50(energy)] truth 43.99@0.30, 53.19@1.43
+voice-pair noisy high eh legato C#5+5 off=-9,1 scoop=-127,-198 vib=58 seed=5065: heard [72.86@0.35(energy)] truth 72.91@0.30, 78.01@1.14
+voice-pair noisy low ah gap G2+2 off=14,-5 scoop=-139,-125 vib=17 seed=5070: heard [43.13@0.36(energy), 32.95@1.72(energy)] truth 43.14@0.30, 44.95@1.65
+voice-pair phone high ee gap B4-10 off=-19,-14 scoop=-189,0 vib=59 seed=5075: heard [60.88@1.46(energy)] truth 70.81@0.30, 60.86@1.45
+voice-pair clean high eh legato F4+12 off=17,6 scoop=-241,-247 vib=45 seed=5079: heard [65.15@0.30(energy), 77.03@1.62(pitch)] truth 65.17@0.30, 77.06@1.49
+voice-pair noisy low eh legato D4-11 off=-14,7 scoop=-87,49 vib=0 seed=5082: heard [61.86@0.34(energy), 51.08@1.79(pitch)] truth 61.86@0.30, 51.07@1.67
+voice-pair noisy high ah gap A#3+1 off=-13,2 scoop=-248,-123 vib=56 seed=5083: heard [57.89@0.38(energy), 59.00@1.85(energy)] truth 57.87@0.30, 59.02@1.80
+voice-pair noisy low eh gap C#4+3 off=-4,-5 scoop=-189,93 vib=0 seed=5088: heard [60.95@0.34(energy)] truth 60.96@0.30, 63.95@1.44
+voice-pair noisy high oo gap G4-9 off=14,-6 scoop=79,-212 vib=40 seed=5089: heard [67.28@1.11(voiced), 57.86@1.89(voiced)] truth 67.14@0.30, 57.94@1.80
+voice-pair phone low oo gap A2+6 off=9,-11 scoop=-133,-156 vib=0 seed=5092: heard [45.09@0.31(energy), 50.85@1.91(pitch)] truth 45.09@0.30, 50.89@1.79
+voice-pair noisy high oo gap D#5+6 off=-6,18 scoop=-114,-131 vib=53 seed=5095: heard [74.88@0.43(energy), 81.11@1.38(energy)] truth 74.94@0.30, 81.18@1.32
+voice-pair phone low eh legato B2+11 off=7,-9 scoop=-86,-224 vib=44 seed=5098: heard [47.05@0.31(energy), 57.83@1.55(pitch)] truth 47.07@0.30, 57.91@1.45
+voice-pair noisy low ah legato G2+9 off=-9,-6 scoop=0,-183 vib=0 seed=5100: heard [42.93@0.39(voiced), 51.91@1.32(pitch)] truth 42.91@0.30, 51.94@1.25
+voice-pair noisy high ee legato G#5-4 off=-2,-16 scoop=-116,73 vib=0 seed=5101: heard [79.80@0.42(voiced), 75.85@1.58(voiced)] truth 79.98@0.30, 75.84@1.48
+voice-pair clean high ee legato F#4-9 off=-7,-15 scoop=-220,-236 vib=45 seed=5103: heard [65.88@0.30(energy), 56.84@1.79(pitch)] truth 65.93@0.30, 56.85@1.66
+voice-pair noisy low oo gap D#4-3 off=12,-12 scoop=-181,-122 vib=44 seed=5106: heard [63.08@0.38(energy), 59.94@1.65(voiced)] truth 63.12@0.30, 59.88@1.54
+voice-pair noisy high ah gap E4+4 off=1,-16 scoop=-208,-236 vib=45 seed=5107: heard [63.98@0.36(energy), 67.79@1.47(energy)] truth 64.01@0.30, 67.84@1.39
+voice-pair noisy low oo gap C4-5 off=19,5 scoop=65,-164 vib=29 seed=5112: heard [60.16@0.35(energy)] truth 60.19@0.30, 55.05@1.84
+voice-pair noisy high ee legato E5-10 off=8,-13 scoop=-247,-177 vib=0 seed=5113: heard [65.82@1.47(energy)] truth 76.08@0.30, 65.87@1.48
+voice-pair noisy low ee legato D#3-3 off=20,-1 scoop=-210,-236 vib=0 seed=5118: heard [51.12@0.41(voiced), 47.95@1.74(pitch)] truth 51.20@0.30, 47.99@1.66
+voice-pair noisy high ah legato F5-2 off=-8,4 scoop=-77,-236 vib=21 seed=5119: heard [76.88@0.45(energy), 74.99@1.60(pitch)] truth 76.92@0.30, 75.04@1.55
+voice-pair noisy low ah gap B2+10 off=4,-3 scoop=51,85 vib=0 seed=5124: heard [57.01@1.83(voiced)] truth 47.04@0.30, 56.97@1.78
+voice-pair noisy high eh gap C5+7 off=18,9 scoop=101,-244 vib=58 seed=5125: heard [72.24@0.34(energy)] truth 72.18@0.30, 79.09@1.47
+voice-pair phone high ah legato D#5+1 off=18,-20 scoop=79,0 vib=0 seed=5129: heard [75.48@0.31(energy)] truth 75.18@0.30, 75.80@1.61
+voice-pair noisy low oo legato F#3-4 off=-9,-7 scoop=-197,-153 vib=49 seed=5130: heard [53.92@0.48(voiced), 49.89@1.56(pitch)] truth 53.91@0.30, 49.93@1.49
+voice-pair noisy high eh legato E5-8 off=-7,-17 scoop=-166,-206 vib=16 seed=5131: heard [75.88@0.34(energy), 67.81@1.61(pitch)] truth 75.93@0.30, 67.83@1.50
+voice-pair noisy low oo gap G2+5 off=-15,3 scoop=-75,-78 vib=49 seed=5136: heard [42.79@0.36(energy), 48.10@1.43(voiced)] truth 42.85@0.30, 48.03@1.34
+voice-pair noisy high eh gap A5-11 off=12,-7 scoop=-161,-234 vib=0 seed=5137: heard [81.07@0.38(voiced), 69.90@1.71(energy)] truth 81.12@0.30, 69.93@1.66
+voice-pair noisy low ee legato A#2+7 off=-1,-19 scoop=0,0 vib=0 seed=5142: heard [45.99@0.36(energy), 52.81@1.78(pitch)] truth 45.99@0.30, 52.81@1.68
+voice-pair noisy high ee legato C#5-11 off=-13,14 scoop=-154,-216 vib=16 seed=5143: heard [62.06@1.54(energy)] truth 72.87@0.30, 62.14@1.55
+voice-pair phone high eh legato D#5-9 off=-5,-10 scoop=-248,109 vib=18 seed=5147: heard [74.89@0.31(energy), 65.91@1.24(pitch)] truth 74.95@0.30, 65.90@1.15
+voice-pair noisy low ee legato F2+4 off=9,12 scoop=-241,59 vib=0 seed=5154: heard [41.08@0.38(energy), 45.12@1.58(pitch)] truth 41.09@0.30, 45.12@1.53
+voice-pair noisy high eh gap C5-10 off=15,-1 scoop=72,-214 vib=45 seed=5155: heard [72.10@0.47(energy)] truth 72.15@0.30, 61.99@1.25
+voice-pair noisy low ee legato F#3+6 off=-5,17 scoop=-137,-118 vib=0 seed=5160: heard [60.13@1.31(voiced)] truth 53.95@0.30, 60.17@1.33
+voice-pair noisy high oo gap A3+4 off=-12,-18 scoop=-107,0 vib=31 seed=5161: heard [60.81@1.78(energy)] truth 56.88@0.30, 60.82@1.67
+voice-pair noisy low eh gap E4-6 off=-18,-18 scoop=0,-232 vib=0 seed=5166: heard [63.81@0.44(voiced), 57.79@1.82(energy)] truth 63.82@0.30, 57.82@1.72
+voice-pair noisy high eh gap E5-10 off=0,0 scoop=-56,-158 vib=0 seed=5167: heard [75.98@0.36(voiced), 66.00@1.87(voiced)] truth 76.00@0.30, 66.00@1.68
+voice-pair noisy low eh legato G#2+4 off=-1,1 scoop=-54,-117 vib=43 seed=5172: heard [44.02@0.46(energy), 47.95@1.26(pitch)] truth 43.99@0.30, 48.01@1.22
+voice-pair noisy high oo gap A#4-8 off=20,9 scoop=-104,0 vib=41 seed=5179: heard [62.08@1.42(energy)] truth 70.20@0.30, 62.09@1.37

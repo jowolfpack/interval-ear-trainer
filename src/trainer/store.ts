@@ -16,6 +16,8 @@ export interface Settings {
   /** Play voice exercises an octave above the sung range. */
   voicePlayOctaveUp: boolean;
   showStartKey: boolean;
+  /** Hands-free: replay after a miss, move on after a hit, no tapping. */
+  handsFree: boolean;
   showIntervalName: boolean;
   progression: 'adaptive' | 'manual';
   manualIntervals: number[];
@@ -82,6 +84,7 @@ export const DEFAULT_SETTINGS: Settings = {
   voiceType: null,
   voicePlayOctaveUp: false,
   showStartKey: true,
+  handsFree: false,
   showIntervalName: false,
   progression: 'adaptive',
   manualIntervals: [4, 7, 12],

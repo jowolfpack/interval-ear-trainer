@@ -44,6 +44,7 @@ export function settingsScreen(): Screen {
         field('Instrument', '', h('select', { onchange: (e: Event) => save({ mode: (e.target as HTMLSelectElement).value as Settings['mode'] }) },
           h('option', { value: 'piano', selected: s.mode === 'piano' }, 'Piano'), h('option', { value: 'voice', selected: s.mode === 'voice' }, 'Voice'))),
         field('Show start key', 'Off = harder: start anywhere, only the interval counts', check('showStartKey')),
+        field('Hands-free', 'Replays after a miss (up to 3 tries) and moves on after a hit, no tapping needed', check('handsFree')),
         field('Show interval name before playing', 'Off = pure ear training', check('showIntervalName')),
         field('Progression', 'Adaptive unlocks intervals as you get them right', h('select', { onchange: (e: Event) => save({ progression: (e.target as HTMLSelectElement).value as Settings['progression'] }) },
           h('option', { value: 'adaptive', selected: s.progression === 'adaptive' }, 'Adaptive'), h('option', { value: 'manual', selected: s.progression === 'manual' }, 'Manual'))),

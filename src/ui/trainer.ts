@@ -13,6 +13,13 @@ type State = 'idle' | 'playing' | 'listening' | 'result';
 
 const GAP_AFTER_PLAYBACK_MS = 300;
 const WARMUP_S = 0.15;
+// Hands-free timing: time to read the feedback before the app carries on.
+const AUTO_NEXT_S = 3;
+const AUTO_RETRY_S = 4;
+/** Hands-free: after this many misses on one exercise, move on. */
+const AUTO_MAX_TRIES = 3;
+/** Hands-free: pause after this many attempts in a row with nothing heard. */
+const AUTO_MAX_SILENT = 2;
 
 const arrow = (semis: number) => (semis > 0 ? '↑' : '↓');
 const describeInterval = (semis: number) => `${intervalName(semis)} ${arrow(semis)}`;
@@ -24,6 +31,9 @@ export function trainerScreen(): Screen {
   let lastJudgement: Judgement | null = null;
   let run = 0; // invalidates stale async continuations
   let wakeLock: { release(): Promise<void> } | null = null;
+  let triesOnEx = 0; // judged attempts on the current exercise
+  let silentStreak = 0; // hands-free: attempts in a row with nothing heard
+  let autoTimer: ReturnType<typeof setInterval> | null = null;
   const sessionAttempts = () => store.attempts.filter((a) => a.s === store.session);
 
   const modeSeg = h('div', { class: 'seg', role: 'group', 'aria-label': 'Instrument' });
@@ -35,7 +45,7 @@ export function trainerScreen(): Screen {
   const result = h('div');
   const buttons = h('div', { class: 'btns' });
   const session = h('p', { class: 'session small' });
-  const hintToggle = h('label', { class: 'row small muted', style: 'justify-content:center;gap:8px' });
+  const hintToggle = h('div', { class: 'row small muted', style: 'justify-content:center;gap:16px;flex-wrap:wrap' });
 
   function renderMode() {
     clear(modeSeg);
@@ -48,7 +58,53 @@ export function trainerScreen(): Screen {
     }
     clear(hintToggle);
     const cb = h('input', { type: 'checkbox', checked: store.settings.showStartKey, onchange: (e: Event) => { store.saveSettings({ showStartKey: (e.target as HTMLInputElement).checked }); render(); } });
-    hintToggle.append(cb, 'Show start key');
+    const hf = h('input', { type: 'checkbox', checked: store.settings.handsFree, onchange: (e: Event) => {
+      const on = (e.target as HTMLInputElement).checked;
+      store.saveSettings({ handsFree: on });
+      if (!on) cancelAuto();
+      render();
+    } });
+    hintToggle.append(h('label', { class: 'row' }, cb, 'Show start key'), h('label', { class: 'row' }, hf, 'Hands-free'));
+  }
+
+  function cancelAuto() {
+    if (autoTimer) clearInterval(autoTimer);
+    autoTimer = null;
+  }
+
+  /** Hands-free: count down in the status line, then run `then`. */
+  function autoAfter(seconds: number, label: string, then: () => void) {
+    cancelAuto();
+    const myRun = run;
+    let left = seconds;
+    const tick = () => {
+      if (myRun !== run || !store.settings.handsFree) { cancelAuto(); return; }
+      if (left <= 0) { cancelAuto(); then(); return; }
+      status.className = 'status';
+      status.textContent = `${label} in ${left}…`;
+      left--;
+    };
+    tick();
+    autoTimer = setInterval(tick, 1000);
+    renderButtons();
+  }
+
+  /** Hands-free: decide what follows a judged attempt. */
+  function autoContinue(j: Judgement) {
+    if (!store.settings.handsFree) return;
+    if (j.status === 'incomplete') {
+      if (++silentStreak >= AUTO_MAX_SILENT) {
+        status.textContent = 'Hands-free paused: nothing heard. Press Try again or Next to carry on.';
+        silentStreak = 0;
+        return;
+      }
+      autoAfter(AUTO_RETRY_S, 'Again', () => void replayAndListen());
+      return;
+    }
+    silentStreak = 0;
+    if (j.correct) autoAfter(AUTO_NEXT_S, 'Next', () => void next(true));
+    else if (triesOnEx < AUTO_MAX_TRIES) autoAfter(AUTO_RETRY_S, 'Again', () => void replayAndListen());
+    else autoAfter(AUTO_RETRY_S, `${AUTO_MAX_TRIES} tries — next`, () => void next(true));
   }
 
   function playNotes(e: Exercise): [number, number] {
@@ -140,6 +196,9 @@ export function trainerScreen(): Screen {
       buttons.append(h('button', { class: 'big', disabled: true }, 'Listen…'));
     } else if (state === 'listening') {
       buttons.append(b('Replay', () => replayAndListen()), b('Done', () => finish()));
+      if (store.settings.handsFree) buttons.append(b('Pause', () => { run++; stopListening(); setState('idle', 'Paused'); }));
+    } else if (autoTimer) {
+      buttons.append(b('Pause', () => { cancelAuto(); setState('result', 'Paused'); showResult(); }), b('Next', () => next(true), 'primary big'));
     } else {
       buttons.append(b('Replay target', () => replayOnly()), b('Try again', () => replayAndListen()), b('Next', () => next(true), 'primary big'));
     }
@@ -168,7 +227,8 @@ export function trainerScreen(): Screen {
 
   async function next(newExercise: boolean) {
     const s = store.settings;
-    if (newExercise || !ex) ex = pickExercise(s, store.progress, store.attempts, ex);
+    cancelAuto();
+    if (newExercise || !ex) { ex = pickExercise(s, store.progress, store.attempts, ex); triesOnEx = 0; }
     lastJudgement = null;
     await requestWakeLock();
     await replayAndListen();
@@ -195,6 +255,7 @@ export function trainerScreen(): Screen {
   }
 
   async function replayOnly() {
+    cancelAuto();
     const myRun = ++run;
     await playTarget(myRun);
     if (myRun === run) {
@@ -204,6 +265,7 @@ export function trainerScreen(): Screen {
   }
 
   async function replayAndListen() {
+    cancelAuto();
     const myRun = ++run;
     if (!(await playTarget(myRun))) return;
     await listen(myRun);
@@ -262,8 +324,10 @@ export function trainerScreen(): Screen {
       const a: Attempt = {
         t: Date.now(), s: store.session, mode: s.mode, start: ex.start, semis: ex.semis, played: j.played,
         correct: j.correct, startShown: s.showStartKey, startOk: j.startOk, cents: j.intervalCents,
-        heard: j.heard.map((m) => Math.round(m * 100) / 100), adaptive: ex.adaptive,
+        // Retries (after hearing the answer) don't count toward unlocking.
+        heard: j.heard.map((m) => Math.round(m * 100) / 100), adaptive: ex.adaptive && triesOnEx === 0,
       };
+      triesOnEx++;
       store.addAttempt(a);
       if (ex.adaptive) {
         const { progress, events } = updateProgress(store.progress, store.attempts);
@@ -274,6 +338,7 @@ export function trainerScreen(): Screen {
     setState('result', '');
     showResult();
     if (store.settings.releaseMic) mic.stop();
+    autoContinue(j);
   }
 
   function showResult() {
@@ -351,6 +416,7 @@ export function trainerScreen(): Screen {
     el,
     leave: () => {
       run++;
+      cancelAuto();
       stopListening();
       stopAll();
       mic.stop();

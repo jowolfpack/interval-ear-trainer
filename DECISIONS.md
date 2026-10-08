@@ -118,6 +118,14 @@ outside, down to C2 / up to C7.
 gaps with a loud phone speaker next to the mic: no self-listening errors at any gap;
 300 ms adds margin for real rooms.
 
+**Hands-free mode** (toggle on the trainer screen). After a hit: 3 s countdown, then the
+next exercise. After a miss: 4 s to read the feedback, then the same interval is replayed;
+after 3 misses it moves on so you don't get stuck. If nothing is heard twice in a row
+it pauses, so it doesn't keep playing to an empty room. A Pause button is shown while
+it runs. Retries (any attempt after the first on the same exercise, hands-free or
+"Try again") are still recorded in the stats but don't count toward unlocking,
+because you've already been shown the answer.
+
 **Screen wake lock** while training (phone on the music stand).
 
 ## Platform

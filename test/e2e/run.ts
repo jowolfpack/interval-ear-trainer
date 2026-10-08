@@ -92,6 +92,22 @@ try {
   check(/1\s*attempts/.test(statsText), 'Stats shows the recorded attempt');
   await page.goto('http://localhost:4179/#/settings', { waitUntil: 'networkidle0' });
   await page.screenshot({ path: join(OUT, 'settings.png'), fullPage: true });
+  // --- Hands-free: one tap, then the app keeps going by itself.
+  await page.evaluate(() => {
+    const s = JSON.parse(localStorage.getItem('iet.settings.v1') ?? '{}');
+    localStorage.setItem('iet.settings.v1', JSON.stringify({ ...s, handsFree: true }));
+  });
+  await page.goto('http://localhost:4179/#/train', { waitUntil: 'networkidle0' });
+  await page.reload({ waitUntil: 'networkidle0' }); // hash change alone keeps the in-memory settings
+  const before = await page.evaluate(() => JSON.parse(localStorage.getItem('iet.attempts.v1') ?? '[]').length);
+  await page.click('button.primary');
+  const sawCountdown = await page.waitForFunction(() => /(Next|Again|next) in \d/.test(document.querySelector('.status')?.textContent ?? ''), { timeout: 25000 }).then(() => true, () => false);
+  check(sawCountdown, 'Hands-free shows a countdown after the result');
+  await page.waitForFunction((n) => JSON.parse(localStorage.getItem('iet.attempts.v1') ?? '[]').length >= n + 2, { timeout: 40000 }, before).catch(() => {});
+  const after = await page.evaluate(() => JSON.parse(localStorage.getItem('iet.attempts.v1') ?? '[]').length);
+  check(after - before >= 2, `Hands-free records further attempts without tapping (${after - before} after one tap)`);
+  await page.goto('http://localhost:4179/#/settings', { waitUntil: 'networkidle0' });
+
   check(errors.length === 0, `no page errors${errors.length ? ': ' + errors.join(' | ') : ''}`);
 } finally {
   await browser.close();

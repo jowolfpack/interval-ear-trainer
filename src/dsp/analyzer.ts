@@ -109,7 +109,8 @@ export class FrameAnalyzer {
     this.detector = new McLeodDetector({
       sampleRate: o.sampleRate,
       frameSize: this.frameSize,
-      minFreq: o.minFreq ?? 50,
+      // 62 Hz: just below C2 at −50 cents. Keeps 50/60 Hz mains hum out.
+      minFreq: o.minFreq ?? 62,
       maxFreq: o.maxFreq ?? 2200,
     });
     this.ring = new Float32Array(this.frameSize * 2);

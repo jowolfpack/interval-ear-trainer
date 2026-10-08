@@ -76,7 +76,7 @@ export function pianoNote(o: PianoNoteOpts): Float32Array {
     if (!rec && o.dyn && o.dyn !== 'mf') rec = loadIowa(o.midi, 'mf');
     if (!rec) {
       // Fall back to the nearest available recording and shift it.
-      for (let d = 1; d < 12 && !rec; d++) rec = loadIowa(o.midi - d, 'mf') ?? loadIowa(o.midi + d, 'mf');
+      for (let d = 1; d < 24 && !rec; d++) rec = loadIowa(o.midi - d, 'mf') ?? loadIowa(o.midi + d, 'mf');
     }
     if (!rec) throw new Error('no iowa fixtures — run npm run fetch-fixtures');
   } else {

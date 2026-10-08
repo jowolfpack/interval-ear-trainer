@@ -69,7 +69,7 @@ export class NoteSegmenter {
   private quietFrames = 0;
   private lastOnsetTime = -1;
   private pitchRun: Frame[] = [];
-  private voicedRun: Frame[] = [];
+  private lastEndTime = -1;
 
   // Tunables (see DECISIONS.md / TEST_RESULTS.md for how they were chosen).
   gateOnDb = 10;
@@ -125,10 +125,17 @@ export class NoteSegmenter {
       }
       // In noise the level gate may never open; a run of clearly periodic
       // frames with a consistent pitch is a note too (noise is aperiodic).
-      const run = this.voicedRun;
-      const ok = fr.clarity >= 0.8 && fr.db > floor + 3 && (run.length === 0 || Math.abs(fr.midi - median(run.map((x) => x.midi))) < 1);
-      if (ok) run.push(fr); else run.length = 0;
-      if (run.length >= 5) this.startNote(fr, 'voiced', done, [...run]);
+      // Look at the last 8 frames: ≥ 6 periodic ones agreeing on a pitch.
+      const win = h.slice(Math.max(0, h.length - 9), h.length - 1);
+      const voiced = win.filter((x) => x.clarity >= 0.7 && x.db > floor + 3 && x.time > this.lastEndTime);
+      if (voiced.length >= 6) {
+        const m = median(voiced.map((x) => x.midi));
+        const agree = voiced.filter((x) => Math.abs(x.midi - m) < 0.8);
+        // …and the level actually rose (a steady hum/drone is not a note).
+        const before = h.slice(0, Math.max(0, h.length - 9)).map((x) => x.db);
+        const rose = before.length < 8 || Math.max(...agree.map((x) => x.db)) - Math.min(...before) > 6;
+        if (agree.length >= 6 && rose) this.startNote(fr, 'voiced', done, agree);
+      }
       return done;
     }
 
@@ -204,13 +211,13 @@ export class NoteSegmenter {
     this.notes.push(note);
     this.quietFrames = 0;
     this.pitchRun = [];
-    this.voicedRun = [];
     this.lastOnsetTime = onset;
   }
 
   private endNote(time: number, done: DetectedNote[]): void {
     const st = this.cur!;
     st.note.end = Math.max(st.note.onset, time);
+    this.lastEndTime = st.note.end;
     this.estimate(st, true);
     st.note.final = true;
     this.cur = null;
@@ -300,11 +307,16 @@ export class NoteSegmenter {
       }
     }
 
-    if (cand.length === 0 && !final) return;
-    if (cand.length === 0) {
-      // Very short note: fall back to any pitched frame after the onset.
-      cand = st.frames.filter((x) => x.freq > 0 && x.clarity >= 0.6 && x.time > note.onset).map((x) => ({ time: x.time, midi: x.midi, clarity: x.clarity }));
-      if (cand.length === 0) return;
+    if (cand.length === 0 && final) {
+      // Very short note: fall back to any clearly pitched frame after the onset.
+      cand = st.frames.filter((x) => x.freq > 0 && x.clarity >= 0.75 && x.time > note.onset).map((x) => ({ time: x.time, midi: x.midi, clarity: x.clarity }));
+    }
+    // A note needs a few clearly periodic frames; otherwise it was noise, a
+    // knock or a click and must not be judged.
+    if (cand.filter((x) => x.clarity >= 0.75).length < 3) {
+      note.midi = NaN;
+      note.used = 0;
+      return;
     }
 
     // Semitone vote (so octave-error frames can't drag the median), weighted by clarity.

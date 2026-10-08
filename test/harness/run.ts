@@ -13,7 +13,7 @@ import { AttemptListener } from '../../src/trainer/listen.ts';
 import { noteNameAscii } from '../../src/dsp/notes.ts';
 import {
   CONDITIONS, makePianoPairs, makeVoicePairs, pianoSources, renderPianoPair, renderPianoSingle, renderVoicePair,
-  type Condition, type Rendered,
+  renderNoiseOnly, renderWithPlaybackTail, type Condition, type Rendered,
 } from './scenarios.ts';
 import { ROOT } from './audio.ts';
 
@@ -64,7 +64,9 @@ function evalPair(r: Rendered, mode: Mode, sr: number, target: { start: number; 
   for (let i = 0; i < r.audio.length && !stopped; i += 512) stopped = L.push(r.audio.subarray(i, i + 512));
   const notes = stopped ? L.notes : L.finish();
   const count = notes.length;
-  const onsetOk = count >= 2 && Math.abs(notes[0].onset - r.truth[0].onset) < 0.08 && Math.abs(notes[1].onset - r.truth[1].onset) < 0.08;
+  // Sung onsets are soft (and a legato glide has no sharp boundary), so voice gets a wider window.
+  const tol = mode === 'piano' ? 0.08 : 0.15;
+  const onsetOk = count >= 2 && Math.abs(notes[0].onset - r.truth[0].onset) < tol && Math.abs(notes[1].onset - r.truth[1].onset) < tol;
   let octErr = 0, noteErr = 0;
   const centsErr: number[] = [];
   for (let i = 0; i < Math.min(2, count); i++) {
@@ -216,6 +218,7 @@ function suiteVoicePairs() {
   md.push('Additive voice model (glottal-like harmonic source, 4 vowels with 3 formants, breath noise, slow pitch drift and jitter). Each note: ' +
     'singer offset ±20 cents (ground truth includes it), onset scoop (75%: from 50–250 cents below; some from above), vibrato 15–60 cents on 70% of trials, ' +
     'either a gap between the notes or a legato glide. Ranges: *low* E2–E4 (male), *high* A3–A5 (female).\n');
+  md.push('- **segmentation ok**: as for piano, but with a ±150 ms window (sung onsets ramp in, and a legato glide has no sharp boundary).\n');
   md.push('- **cents error**: |measured − true| of each correctly identified note, i.e. how well the stable part is found despite scoop and vibrato.\n');
   const head = ['n', 'segmentation ok', 'interval ok', 'start+interval ok', 'false accept', 'octave err (per note)', 'median cents err', 'p95 cents err'];
   const row = (label: string[], t: Tally) => [...label, String(t.n), pct(t.c.seg ?? 0, t.n), pct(t.c.int ?? 0, t.n), pct(t.c.start ?? 0, t.n), pct(t.c.fa ?? 0, t.n), pct(t.c.oct ?? 0, 2 * t.n), quant(t.v.cents ?? [], 0.5).toFixed(1), quant(t.v.cents ?? [], 0.95).toFixed(1)];
@@ -237,9 +240,46 @@ function suiteVoicePairs() {
   md.push('');
 }
 
+// ---------------------------------------------------------------------------
+function suiteRobustness() {
+  md.push('## 4. Robustness: false triggers and self-listening\n');
+  md.push('**Background only** (6 s each, nothing played; any detected note is a false trigger). The trainer would take a false note as the user\'s first note.\n');
+  const rows: string[][] = [];
+  for (const kind of ['room', 'noisy-room', 'knocks', 'hum50', 'hum60'] as const) {
+    let notes = 0, trials = 0;
+    for (let s = 0; s < (QUICK ? 5 : 20); s++) {
+      const x = renderNoiseOnly(kind, 100 + s);
+      const { notes: ns } = analyzeBuffer(x, 48000, 'piano');
+      const { notes: nv } = analyzeBuffer(x, 48000, 'voice');
+      notes += ns.length + nv.length;
+      trials += 2;
+      for (const n of [...ns, ...nv]) failures.push(`false-trigger ${kind} seed=${100 + s}: ${n.midi.toFixed(2)}@${n.onset.toFixed(2)} (${n.cause})`);
+    }
+    rows.push([kind, String(trials), String(notes), (notes / (trials * 6 / 60)).toFixed(2)]);
+  }
+  md.push(table(['background', 'runs (piano+voice mode)', 'false notes', 'false notes / minute'], rows));
+  md.push('\n**Self-listening**: the target is played through a (bass-less) phone speaker right next to the mic, faded out over 150 ms; after a gap the app starts listening and the user plays the pair 0.4–1.4 s later (phone condition). Counted as failure if the first heard note is not the user\'s first note.\n');
+  const rows2: string[][] = [];
+  for (const gap of [0.1, 0.3, 0.5]) {
+    const pairs = makePianoPairs(QUICK ? 40 : 150, 20000 + Math.round(gap * 1000));
+    let ok = 0, intOk = 0;
+    for (const p of pairs) {
+      const r = renderWithPlaybackTail(p, gap);
+      const e = evalPair(r, 'piano', 48000, { start: p.start, semis: p.interval });
+      if (e.segOk) ok++;
+      if (e.intervalOk) intOk++;
+      if (!e.segOk) failures.push(`self-listen gap=${gap} ${noteNameAscii(p.start)}${p.interval > 0 ? '+' : ''}${p.interval} seed=${p.seed}: heard [${e.notes.map((n) => `${n.midi.toFixed(2)}@${n.onset.toFixed(2)}(${n.cause})`).join(', ')}] truth ${r.truth.map((t) => t.onset.toFixed(2)).join(',')}`);
+    }
+    rows2.push([`${gap * 1000} ms`, String(pairs.length), pct(ok, pairs.length), pct(intOk, pairs.length)]);
+  }
+  md.push(table(['gap after playback', 'n', 'segmentation ok', 'interval ok'], rows2));
+  md.push('');
+}
+
 if (!ONLY || ONLY === 'piano-single') suitePianoSingle();
 if (!ONLY || ONLY === 'piano-pairs') suitePianoPairs();
 if (!ONLY || ONLY === 'voice-pairs') suiteVoicePairs();
+if (!ONLY || ONLY === 'robustness') suiteRobustness();
 
 const body = md.join('\n');
 console.log(body);

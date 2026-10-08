@@ -1,7 +1,7 @@
 // Scenario generation: piano singles/pairs and voice pairs under different
 // acoustic conditions. Everything is seeded, so results are reproducible.
 import { pianoNote, voicePhrase, iowaAvailable, VOWELS, type PianoSource, type Vowel } from './sources.ts';
-import { addHum, addNoise, addReverb, highpass, mixInto, rng, rms } from './audio.ts';
+import { addHum, addNoise, addReverb, highpass, mixInto, rng, rms, gaussian, onePoleLowpass } from './audio.ts';
 
 export type Condition = 'clean' | 'phone' | 'noisy';
 export const CONDITIONS: Condition[] = ['clean', 'phone', 'noisy'];
@@ -151,4 +151,85 @@ export function renderVoicePair(v: VoicePair): Rendered {
   });
   for (let i = 0; i < data.length; i++) data[i] *= 0.15 * v.level;
   return { audio: applyCondition(data, v.sampleRate, v.cond, v.seed), truth: truth.map((t) => ({ onset: t.start, midi: t.midi })) };
+}
+
+// ---------------------------------------------------------------------------
+// Robustness scenarios
+
+/** Background-only recordings: nothing is played, nothing should be detected. */
+export function renderNoiseOnly(kind: 'room' | 'noisy-room' | 'knocks' | 'hum50' | 'hum60', seed: number, sr = 48000): Float32Array {
+  const r = rng(seed);
+  const len = Math.floor(6 * sr);
+  const x = new Float32Array(len);
+  if (kind === 'knocks') {
+    // Knocks / page turns / bench creaks: short decaying noise bursts, some loud.
+    for (let t = 0.3; t < 5.8; t += 0.4 + r() * 0.8) {
+      const amp = 0.02 + r() * 0.3;
+      const start = Math.floor(t * sr);
+      const dur = Math.floor((0.01 + r() * 0.05) * sr);
+      for (let i = 0; i < dur && start + i < len; i++) x[start + i] += amp * gaussian(r) * Math.exp(-i / (0.3 * dur));
+    }
+    const y = addReverb(x, sr, 0.5, 0.5, r);
+    // Quiet background so the gate has a floor.
+    for (let i = 0; i < len; i++) y[i] += 0.0003 * gaussian(r);
+    return y;
+  }
+  if (kind === 'hum50' || kind === 'hum60') {
+    for (let i = 0; i < len; i++) x[i] = 0.0005 * gaussian(r);
+    return addHum(x, sr, kind === 'hum50' ? 50 : 60, 0, 0.003);
+  }
+  for (let i = 0; i < len; i++) x[i] = 0.002 * gaussian(r);
+  const y = onePoleLowpass(x, 1500, sr);
+  if (kind === 'noisy-room') {
+    // A TV / conversation-like modulated noise.
+    for (let i = 0; i < len; i++) y[i] *= 3 * (1 + 0.8 * Math.sin((2 * Math.PI * 3 * i) / sr) * Math.sin((2 * Math.PI * 0.4 * i) / sr));
+  }
+  return y;
+}
+
+/**
+ * Self-listening: the app plays the target through the phone speaker, fades
+ * out, waits `gap` s, then listens while the user plays. Returns audio from
+ * the moment listening starts.
+ */
+export function renderWithPlaybackTail(p: PianoPair, gap: number): Rendered {
+  const sr = p.sampleRate;
+  const r = rng(p.seed * 3 + 1);
+  // App schedule (see src/audio/player.ts): note1 0.9 s, note2 1.2 s, 0.15 s fade.
+  const playLen = 0.9 + 1.2;
+  const fade = 0.15;
+  const listenAt = playLen + fade + gap;
+  const userDelay = 0.4 + r() * 1.0;
+  const total = listenAt + userDelay + p.ioi + 1.6;
+  const spk = new Float32Array(Math.floor(total * sr));
+  const target2 = p.start + p.interval;
+  const a = pianoNote({ source: 'salamander', midi: p.start, sampleRate: sr, length: playLen + fade });
+  const b = pianoNote({ source: 'salamander', midi: target2, sampleRate: sr, length: 1.2 + fade });
+  mixInto(spk, a, 0, 0.6);
+  mixInto(spk, b, Math.floor(0.9 * sr), 0.6);
+  const fadeStart = Math.floor(playLen * sr), fadeEnd = Math.floor((playLen + fade) * sr);
+  for (let i = fadeStart; i < spk.length; i++) spk[i] *= i >= fadeEnd ? 0 : 1 - (i - fadeStart) / (fadeEnd - fadeStart);
+  // Phone speaker: no bass. Loud: the speaker is right next to the mic.
+  highpass(spk, 350, sr);
+  // The user's playing in the phone condition (its noise is relative to the
+  // user's level); the speaker gets the same room, at 0.3–1× the user's peak.
+  const user = renderPianoPair({ ...p, cond: 'phone' });
+  let up = 0, sp = 0;
+  for (const v of user.audio) up = Math.max(up, Math.abs(v));
+  const room = addReverb(spk, sr, 0.5, 0.5, r);
+  for (const v of room) sp = Math.max(sp, Math.abs(v));
+  const g = (up / (sp || 1)) * (0.3 + 0.7 * r());
+  const out = new Float32Array(spk.length);
+  for (let i = 0; i < out.length; i++) out[i] = g * room[i];
+  const off = Math.floor((listenAt + userDelay - 0.4) * sr); // renderPianoPair has a 0.4 s lead-in
+  mixInto(out, user.audio, off, 1);
+  // Background noise must also be present before the user starts: continue
+  // it at the level of the user recording's (note-free) lead-in.
+  const nl = rms(user.audio, 0, Math.floor(0.3 * sr));
+  for (let i = 0; i < off && i < out.length; i++) out[i] += nl * gaussian(r);
+  const from = Math.floor(listenAt * sr);
+  return {
+    audio: out.subarray(from),
+    truth: user.truth.map((t) => ({ onset: t.onset - 0.4 + userDelay, midi: t.midi })),
+  };
 }
